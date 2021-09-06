@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+T:\DoAnTotNghiep\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2782145397.index
+4158360605.index
+980380397.index
+1926681945.index
+3581163120.index
+4212286557.index
+2547404784.index
+108022672.index

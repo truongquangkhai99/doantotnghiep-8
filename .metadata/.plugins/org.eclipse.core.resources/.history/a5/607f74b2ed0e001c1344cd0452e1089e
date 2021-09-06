@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/jee     http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/jdbc    http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<!-- JNDI -->
+	<jee:jndi-lookup id="omDataSource"
+		jndi-name="java:comp/env/jdbc/2nfom" />
+	<bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<bean id="omSessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="omDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com._2nf.om.entity.Category</value>
+				<value>com._2nf.om.entity.Company</value>
+				<value>com._2nf.om.entity.Contact</value>
+				<value>com._2nf.om.entity.Department</value>
+				<value>com._2nf.om.entity.Intern</value>
+				<value>com._2nf.om.entity.Language</value>
+				<value>com._2nf.om.entity.Menu</value>
+				<value>com._2nf.om.entity.National</value>
+				<value>com._2nf.om.entity.OAuthClient</value>
+				<value>com._2nf.om.entity.OAuthAuthCode</value>
+				<value>com._2nf.om.entity.OAuthAccessToken</value>
+				<value>com._2nf.om.entity.OAuthRefreshToken</value>
+				<value>com._2nf.om.entity.Position</value>
+				<value>com._2nf.om.entity.Staff</value>
+				<value>com._2nf.om.entity.User</value>
+				<value>com._2nf.om.entity.History</value>
+				<value>com._2nf.om.payload.HistoryResponse</value>
+				<value>com._2nf.om.payload.UserResponse</value>
+				<value>com._2nf.om.payload.CommonResponse</value>
+				<value>com._2nf.om.payload.ChildrenResponse</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

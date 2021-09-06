@@ -1,0 +1,5 @@
+package com.tutv.entity;
+
+public class User {
+
+}
