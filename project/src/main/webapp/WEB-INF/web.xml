@@ -4,16 +4,28 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
     <display-name>project</display-name>
-    
+    <!-- DispatcherServlet in xml, another way, view SpringWebApplication.java -->
+	<servlet>
+       <servlet-name>spring-mvc</servlet-name>
+       <servlet-class>
+           org.springframework.web.servlet.DispatcherServlet
+       </servlet-class>
+       <load-on-startup>1</load-on-startup>
+   	</servlet>
+   
+    <servlet-mapping>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     
     <!-- Other XML Configuration -->
    <!-- Load by Spring ContextLoaderListener -->
    <context-param>
        <param-name>contextConfigLocation</param-name>
         <param-value>
-           /WEB-INF/tags/datasource.hiber.cfg.xml,
-           /WEB-INF/tags/dao.cfg.xml,
-           /WEB-INF/tags/transaction.cfg.xml
+           /WEB-INF/datasource.hiber.cfg.xml,
+           /WEB-INF/dao.cfg.xml,
+           /WEB-INF/transaction.cfg.xml
          </param-value>
    </context-param>
 
@@ -21,32 +33,6 @@
    <listener>
        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
    </listener>
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/context/applicationContext.xml
-        </param-value>
-    </context-param>
-
-    <!-- Spring MVC -->
-    <servlet>
-        <servlet-name>dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/context/dispatcher-servlet.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
     
     <!-- Spring Security
 	<filter>

@@ -27,7 +27,6 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="javax.persistence.sql-load-script-source">data.sql</property>
-
 		<mapping class="com.tutv.entity.*" />
 	</session-factory>
 

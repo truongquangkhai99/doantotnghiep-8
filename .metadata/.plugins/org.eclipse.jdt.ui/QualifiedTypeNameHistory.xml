@@ -19,4 +19,13 @@
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="com.tutv.entity.User"/>
+<fullyQualifiedTypeName name="org.springframework.web.context.support.WebApplicationContextUtils"/>
+<fullyQualifiedTypeName name="org.springframework.web.WebApplicationInitializer"/>
+<fullyQualifiedTypeName name="javax.servlet.FilterRegistration"/>
+<fullyQualifiedTypeName name="org.springframework.web.filter.CharacterEncodingFilter"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.EnableWebMvc"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer"/>
 </qualifiedTypeNameHistroy>
