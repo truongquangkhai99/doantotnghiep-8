@@ -1,0 +1,6 @@
+
+Sep 08, 2021 24:28:56.61 NEW SESSION
+Sep 08, 2021 24:28:56.61 [13708:3292:0908/002856.616:ERROR:device_event_log_impl.cc(214)] [00:28:56.619] Bluetooth: bluetooth_adapter_winrt.cc:1073 Getting Default Adapter failed.
+
+Sep 08, 2021 09:27:57.15 NEW SESSION
+Sep 08, 2021 09:27:57.15 [2956:11852:0908/092757.149:ERROR:device_event_log_impl.cc(214)] [09:27:57.148] Bluetooth: bluetooth_adapter_winrt.cc:1073 Getting Default Adapter failed.

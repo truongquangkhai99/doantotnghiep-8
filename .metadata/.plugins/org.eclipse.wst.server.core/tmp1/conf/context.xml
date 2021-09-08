@@ -25,4 +25,16 @@
     <!--
     <Manager pathname="" />
     -->
+    <Resource		
+		name="jdbc/tutv"
+		type="javax.sql.DataSource"
+		auth="Container"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/doantotnghiep"
+		username="tutv99"
+		password="123456"
+		maxActive="1"
+		maxIdel="1"
+		maxWait="5000"
+	/>
 </Context>

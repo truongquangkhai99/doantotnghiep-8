@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.tutv.dao;
+
+/**
+ * @author trinh
+ *
+ */
+public interface UserDAO {
+
+}

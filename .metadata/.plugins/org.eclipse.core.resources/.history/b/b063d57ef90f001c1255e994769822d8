@@ -1,0 +1,13 @@
+/**
+ * @package com.tutv.annotation
+ * @date Sep 7, 2021
+ * @author trinh
+ */
+package com.tutv.annotation;
+
+/**
+ * DisplayName
+ */
+public @interface DisplayName {
+
+}

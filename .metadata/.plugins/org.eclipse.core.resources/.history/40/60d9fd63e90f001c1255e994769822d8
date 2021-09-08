@@ -1,0 +1,92 @@
+/**
+ * @package com.tutv.response
+ * @date Sep 7, 2021
+ * @author trinh
+ */
+package com.tutv.response;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+/**
+ * UserResponse
+ */
+@Entity
+public class UserResponse extends EntityResponse {
+
+	/**
+	 * Property id
+	 */
+	@Id
+	@Column(name = "id", nullable = false, columnDefinition = "INT UNSIGNED")
+	private Integer id;
+
+	/**
+	 * Property email
+	 */
+	@Column(name = "email", nullable = false, length = 100)
+	private String email;
+
+	/**
+	 * Property avatar
+	 */
+	@Column(name = "avatar", length = 8)
+	private String avatar;
+	/*
+	 * Constructor
+	 */
+	public UserResponse() {
+	}
+
+	/**
+	 * Constructor
+	 */
+	public UserResponse(Integer id, String email, String avatar) {
+		this.id = id;
+		this.email = email;
+		this.avatar = avatar;
+	}
+
+	/**
+	 * @Get Property id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @Set Property id
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @Get Property email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @Set Property email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @Get Property avatar
+	 */
+	public String getAvatar() {
+		return avatar;
+	}
+
+	/**
+	 * @Set Property avatar
+	 */
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+}
