@@ -19,6 +19,7 @@ import com.tutv.service.UserService;
  */
 @Controller
 @ResponseBody
+@RequestMapping
 public class UserController {
 	/**
 	 * userService
