@@ -1,5 +1,0 @@
-package com.tutv.config;
-
-public class WebMvcConfig {
-
-}
