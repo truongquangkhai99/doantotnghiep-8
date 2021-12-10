@@ -14,7 +14,13 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
 
+import com.tutv.entity.HoSoXetTuyen;
+import com.tutv.entity.Khoa;
+import com.tutv.entity.Nganh;
+import com.tutv.entity.NguyenVong;
 import com.tutv.entity.TaiKhoan;
+import com.tutv.entity.ToHopMon;
+import com.tutv.entity.TruongThpt;
 import com.tutv.entity.User;
 
 /**
@@ -78,7 +84,13 @@ public class SchemeGenerator {
 		MetadataSources metadatas = new MetadataSources(serviceRegistry);
 		metadatas.addAnnotatedClass(User.class);
 		metadatas.addAnnotatedClass(TaiKhoan.class);
-
+		metadatas.addAnnotatedClass(Khoa.class);
+		metadatas.addAnnotatedClass(Nganh.class);
+		metadatas.addAnnotatedClass(TruongThpt.class);
+		metadatas.addAnnotatedClass(HoSoXetTuyen.class);
+		metadatas.addAnnotatedClass(ToHopMon.class);
+		metadatas.addAnnotatedClass(NguyenVong.class);
+		
 		Metadata metadata = metadatas.buildMetadata();
 
 		SchemaExport export = getSchemaExport();

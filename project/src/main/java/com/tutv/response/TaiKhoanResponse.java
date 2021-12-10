@@ -3,28 +3,23 @@
  * @date Dec 7, 2021
  * @author trinh
  */
-package com.tutv.entity;
+package com.tutv.response;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * TaiKhoan Entity
  */
 
 @Entity
-@Table(name = "tai_khoan")
-public class TaiKhoan {
+public class TaiKhoanResponse {
 
 	/**
 	 * Property id
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, columnDefinition = "INT UNSIGNED")
 	private Integer id;
 	
@@ -58,7 +53,7 @@ public class TaiKhoan {
 	@Column(name = "phone", nullable = false, length = 60)
 	private String phone;
 	
-	public TaiKhoan() {
+	public TaiKhoanResponse() {
 		// TODO Auto-generated constructor stub
 	}
 

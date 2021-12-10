@@ -21,6 +21,13 @@
 				<value>com.tutv.entity.User</value>
 				<value>com.tutv.response.UserResponse</value>
 				<value>com.tutv.entity.TaiKhoan</value>
+				<value>com.tutv.entity.Khoa</value>
+				<value>com.tutv.entity.Nganh</value>
+				<value>com.tutv.entity.TruongThpt</value>
+				<value>com.tutv.entity.HoSoXetTuyen</value>
+				<value>com.tutv.entity.ToHopMon</value>
+				<value>com.tutv.entity.NguyenVong</value>
+
 			</list>
 		</property>
 		<property name="hibernateProperties">
