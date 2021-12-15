@@ -5,6 +5,7 @@
  */
 package dto;
 
+import javax.persistence.Column;
 
 /**
  * TaiKhoanDto
@@ -27,6 +28,11 @@ public class TaiKhoanDto extends CommonDto{
 	private String email;
 	
 	/**
+	 * Property status
+	 */
+	private String status;
+	
+	/**
 	 * Property password
 	 */
 	private String password;
@@ -37,9 +43,9 @@ public class TaiKhoanDto extends CommonDto{
 	private String name;
 	
 	/**
-	 * Property level
+	 * Property role
 	 */
-	private Integer level;
+	private String role;
 	
 	/**
 	 * Property phone
@@ -82,12 +88,12 @@ public class TaiKhoanDto extends CommonDto{
 		this.name = name;
 	}
 
-	public Integer getLevel() {
-		return level;
+	public String getRole() {
+		return role;
 	}
 
-	public void setLevel(Integer level) {
-		this.level = level;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getPhone() {
@@ -96,6 +102,24 @@ public class TaiKhoanDto extends CommonDto{
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	/**
+	 * getStatus
+	 *
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * setStatus
+	 *
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

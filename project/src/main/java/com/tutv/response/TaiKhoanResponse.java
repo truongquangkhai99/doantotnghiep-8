@@ -30,6 +30,12 @@ public class TaiKhoanResponse {
 	private String email;
 	
 	/**
+	 * Property status
+	 */
+	@Column(name = "status", length = 60)
+	
+	private String status;
+	/**
 	 * Property password
 	 */
 	@Column(name = "password", nullable = false, length = 60)
@@ -42,10 +48,10 @@ public class TaiKhoanResponse {
 	private String name;
 	
 	/**
-	 * Property level
+	 * Property Role
 	 */
-	@Column(name = "level", nullable = false)
-	private Integer level;
+	@Column(name = "role")
+	private String role;
 	
 	/**
 	 * Property phone
@@ -55,6 +61,14 @@ public class TaiKhoanResponse {
 	
 	public TaiKhoanResponse() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Integer getId() {
@@ -89,12 +103,12 @@ public class TaiKhoanResponse {
 		this.name = name;
 	}
 
-	public Integer getLevel() {
-		return level;
+	public String getRole() {
+		return role;
 	}
 
-	public void setLevel(Integer level) {
-		this.level = level;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getPhone() {

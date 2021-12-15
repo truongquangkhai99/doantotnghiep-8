@@ -41,16 +41,22 @@ public class TaiKhoan {
 	private String password;
 	
 	/**
+	 * Property status
+	 */
+	@Column(name = "status", length = 60)
+	private String status;
+	
+	/**
 	 * Property name
 	 */
 	@Column(name = "name", nullable = false, length = 60)
 	private String name;
 	
 	/**
-	 * Property level
+	 * Property role
 	 */
-	@Column(name = "level", nullable = false)
-	private Integer level;
+	@Column(name = "role", length = 60)
+	private String role;
 	
 	/**
 	 * Property phone
@@ -68,6 +74,14 @@ public class TaiKhoan {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getEmail() {
@@ -94,12 +108,12 @@ public class TaiKhoan {
 		this.name = name;
 	}
 
-	public Integer getLevel() {
-		return level;
+	public String getRole() {
+		return role;
 	}
 
-	public void setLevel(Integer level) {
-		this.level = level;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getPhone() {

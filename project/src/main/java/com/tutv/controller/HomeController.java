@@ -20,4 +20,10 @@ public class HomeController {
       ModelAndView mav = new ModelAndView("home");
       return mav;
    }
+   
+   @RequestMapping(value = "/loginb", method = RequestMethod.GET)
+   public ModelAndView loginPage() {
+      ModelAndView mav = new ModelAndView("login");
+      return mav;
+   }
 }
