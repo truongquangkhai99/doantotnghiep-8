@@ -6,24 +6,33 @@
 package com.tutv.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.tutv.dao.TaiKhoanDAO;
 import com.tutv.dao.UserDAO;
+import com.tutv.entity.TaiKhoan;
+import com.tutv.response.TaiKhoanResponse;
 import com.tutv.response.UserResponse;
 
 /**
  * UserService
  */
 @Service
-public class UserService implements UserDetailsService{
+public class UserService{
 
 	/**
 	 * Field userDAO
 	 */
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private TaiKhoanDAO taiKhoanDAO;
+	
+	public TaiKhoanResponse getTaikhoan(String email) {
+		TaiKhoanResponse user = taiKhoanDAO.findTaiKhoanByEmail(email);
+		return user;
+	}
 
 	/**
 	 * getUser
@@ -36,16 +45,4 @@ public class UserService implements UserDetailsService{
 		return user;
 	}
 
-	/**
-	 * loadUserByUsername
-	 *
-	 * @param username
-	 * @return
-	 * @throws UsernameNotFoundException
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

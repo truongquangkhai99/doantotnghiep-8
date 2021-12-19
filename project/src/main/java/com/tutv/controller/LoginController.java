@@ -6,6 +6,7 @@
 package com.tutv.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,4 +28,15 @@ public class LoginController {
      ModelAndView mav = new ModelAndView("login");
      return mav;
   }
+	
+	/**
+	 * Controller logout
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/logout")
+	public String logout(Model model) {
+		return "login";
+	}
 }

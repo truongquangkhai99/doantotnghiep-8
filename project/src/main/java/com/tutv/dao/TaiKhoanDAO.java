@@ -5,7 +5,12 @@
  */
 package com.tutv.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
+import com.tutv.entity.TaiKhoan;
+import com.tutv.response.TaiKhoanResponse;
 
 /**
  * TaiKhoanDAO
@@ -13,4 +18,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TaiKhoanDAO {
 
+
+	public TaiKhoan findTaiKhoanById(Integer id);
+
+	public TaiKhoanResponse findTaiKhoanByEmail(String email);
+
+	public boolean createTaiKhoanAccount(TaiKhoan taikhoan);
+
+	public Boolean updateTaiKhoan(String email);
+
+	public boolean destroyTaiKhoan(TaiKhoan taikhoan);
+	
+	public List<TaiKhoanResponse> taikhoanList();
 }

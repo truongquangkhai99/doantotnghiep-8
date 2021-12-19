@@ -14,7 +14,6 @@
        </servlet-class>
        <load-on-startup>1</load-on-startup>
    	</servlet>
-   
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
         <url-pattern>/</url-pattern>
@@ -27,26 +26,24 @@
         <param-value>
            /WEB-INF/datasource.hiber.cfg.xml,
            /WEB-INF/dao.cfg.xml,
-           /WEB-INF/transaction.cfg.xml
+           /WEB-INF/transaction.cfg.xml,
+           /WEB-INF/web-security.cfg.xml,
+          <!--  /WEB-INF/mail-bean.xml -->
          </param-value>
    </context-param>
 
-    <!-- Spring ContextLoaderListener -->
+   
+   <filter>
+       <filter-name>springSecurityFilterChain</filter-name>
+       <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+   </filter>
+   <filter-mapping>
+       <filter-name>springSecurityFilterChain</filter-name>
+       <url-pattern>/*</url-pattern>
+   </filter-mapping>
+   
+    <!--  Spring ContextLoaderListener -->
    <listener>
        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
    </listener>
-    
-    <!-- Spring Security
-	<filter>
-	    <filter-name>springSecurityFilterChain</filter-name>
-	    <filter-class>
-	      org.springframework.web.filter.DelegatingFilterProxy
-	    </filter-class>
-	</filter>
-	
-	 <filter-mapping>
-	<filter-name>springSecurityFilterChain</filter-name>
-	<url-pattern>/*</url-pattern>
-	 </filter-mapping> -->
-   
 </web-app>

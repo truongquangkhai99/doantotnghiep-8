@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trang Đăng Nhập</title>
+<title>Trang Đăng Ký</title>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />" />
 <link rel="stylesheet" href="<c:url value='/css/style.css' />" />
 </head>
@@ -52,36 +52,30 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9 col-xl-9 mx-auto" >
-                            <h2 class = "align-items-center text-center">Đăng Nhập Hệ Thống</h2> 
+                            <h2 class = "align-items-center text-center">Đăng Ký Tài Khoản</h2> 
                             <br>
-                            <!-- /login?error=true -->
-     <c:if test="${param.error == 'true'}">
-         <div style="color:red;margin:10px 0px;">
-         
-                Login Failed!!!<br />
-                Reason :  ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-                
-         </div>
-    </c:if>
-                            <form name='f' action="${pageContext.request.contextPath}/formlogin" method='POST'>
+                            <form id="formdangky" name="formdangky">
                                 <div class="form-group mb-3"> 
-                                    <input id="inputEmail" type="email" name = "email" placeholder="Địa chỉ Email" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"> 
-                                </div>
-                                <div class="form-group mb-3"> 
-                                    <input id="inputPassword" type="password" name = "password" placeholder="Mật Khẩu" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                                    <input id="name" type="text" name = "name" placeholder="Tên Người Dùng" required class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
                                     <br> 
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3"> 
-                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input"> 
-                                    <label for="customCheck1" class="custom-control-label">Lưu mật khẩu</label> 
                                 </div> 
-                                        <button type="submit" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">Đăng Nhập</button>
+                                <div class="form-group mb-3"> 
+                                    <input id="email" type="email" name = "email" placeholder="Địa chỉ Email" required autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"> 
+                                </div>
+                                <div class="form-group mb-3"> 
+                                    <input id="password" type="password" name = "password" placeholder="Mật Khẩu" required class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                                    <br> 
+                                </div> 
+                                <div class="form-group mb-3"> 
+                                    <input id="rePassword" type="password" name = "rePassword" placeholder="Nhập lại Mật Khẩu" required class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                                    <br> 
+                                </div>                  
+                                        <input type="submit" value = "Đăng Ký" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                                 <div class="text-center d-flex justify-content-between mt-4">
-                                    <p> Hoặc <a href="<c:url value='/dangky'/>" class="font-italic text-muted"> <u>Tạo Tài Khoản</u></a></p>
+                                    <p> Hoặc nếu đã có tài khoản <a href="<c:url value='/login'/>" class="font-italic text-muted"> <u>Đăng nhập</u></a></p>
                                 </div>
                             </form>
-                     
-                        </div>
+                     	</div>
                     </div>
                 </div>
             </div>
@@ -141,5 +135,79 @@
 <script type='text/javascript' src='<c:url value="/js/jquery-3.5.1.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {		
+	$("#formdangky").submit(function(e) {
+	    e.preventDefault();
+	}).validate({
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		rules: {
+			"email": {
+				required: true,
+				maxlength: 255
+			},
+			"password": {
+				required: true,
+				minlength: 6
+			},
+			"rePassword": {
+				equalTo: "#password",
+				minlength: 6
+				
+			}
+		},
+		messages: {
+			"email": {
+				required: "Bắt buộc nhập username",
+				maxlength: "Hãy nhập tối đa 15 ký tự"
+			},
+			"password": {
+				required: "Bắt buộc nhập password",
+				minlength: "Hãy nhập ít nhất 6 ký tự"
+			},
+			"rePassword": {
+				equalTo: "Hai password phải giống nhau",
+				minlength: "Hãy nhập ít nhất 6 ký tự"
+			}
+		},
+		submitHandler: function(form) {
+			 var formdata = $("#formdangky").serializeArray();
+			  var data = {};
+			  $(formdata ).each(function(index, obj){
+			      data[obj.name] = obj.value;
+			  });
+			$.ajax({
+				url: "/dangkysubmit",
+	          	type: "POST",
+			    data: JSON.stringify(data),
+			    contentType:"application/json; charset=utf-8",
+			    dataType:"json",
+			    success: function (data) {
+			          console.log("SUCCESS : ", data.kq);
+			          if(data.kq == "ok"){
+                  alert("Bạn đã đăng ký thành công. Vui lòng kiểm tra email để kích hoạt tài khoản");
+                }
+                else if(data.kq == "chuaxacthuc"){
+                  alert("Bạn đã đăng ký tài khoản trước đấy nhưng chưa xác thực. Vui lòng kiểm tra email và xác thực tài khoản");
+                }
+                else{
+                  alert("Email đã được đăng ký một tài khoản khác");
+                }
+			      },
+			      error: function (e) {
+			          console.log("ERROR : ", e);
+			      }
+			  });
+		    return false;
+		  }
+	});
+});
+ </script>
+                        
 </body>
 </html>

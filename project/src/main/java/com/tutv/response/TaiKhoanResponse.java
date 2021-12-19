@@ -8,13 +8,14 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * TaiKhoan Entity
  */
-
+@Table(name = "tai_khoan")
 @Entity
-public class TaiKhoanResponse {
+public class TaiKhoanResponse extends EntityResponse{
 
 	/**
 	 * Property id
@@ -30,21 +31,21 @@ public class TaiKhoanResponse {
 	private String email;
 	
 	/**
-	 * Property status
+	 * Property enabled
 	 */
-	@Column(name = "status", length = 60)
+	@Column(name = "enabled")
+	private boolean enabled;
 	
-	private String status;
 	/**
 	 * Property password
 	 */
-	@Column(name = "password", nullable = false, length = 60)
+	@Column(name = "password", length = 60)
 	private String password;
 	
 	/**
 	 * Property name
 	 */
-	@Column(name = "name", nullable = false, length = 60)
+	@Column(name = "name", length = 60)
 	private String name;
 	
 	/**
@@ -63,12 +64,24 @@ public class TaiKhoanResponse {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getStatus() {
-		return status;
+	public TaiKhoanResponse(Integer id, String email, boolean enabled, String password, String name, String role,
+	    String phone) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.enabled = enabled;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+		this.phone = phone;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public Integer getId() {

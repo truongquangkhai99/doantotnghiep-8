@@ -5,6 +5,7 @@
  */
 package com.tutv.dao.impl;
 
+import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.NguyenVongDAO;
@@ -14,5 +15,17 @@ import com.tutv.dao.NguyenVongDAO;
  */
 @Transactional
 public class NguyenVongDAOImpl implements NguyenVongDAO{
-
+	/**
+	 * Property sessionFactory
+	 */
+	private SessionFactory sessionFactory;
+	
+	/**
+	 * setSessionFactory
+	 * 
+	 * @param sessionFactory
+	 */
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 }

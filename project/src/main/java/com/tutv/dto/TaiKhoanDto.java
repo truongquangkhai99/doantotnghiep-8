@@ -3,9 +3,7 @@
  * @date Dec 10, 2021
  * @author trinh
  */
-package dto;
-
-import javax.persistence.Column;
+package com.tutv.dto;
 
 /**
  * TaiKhoanDto
@@ -28,9 +26,9 @@ public class TaiKhoanDto extends CommonDto{
 	private String email;
 	
 	/**
-	 * Property status
+	 * Property enabled
 	 */
-	private String status;
+	private boolean enabled;
 	
 	/**
 	 * Property password
@@ -105,21 +103,21 @@ public class TaiKhoanDto extends CommonDto{
 	}
 
 	/**
-	 * getStatus
+	 * getEnabled
 	 *
-	 * @return the status
+	 * @return the enabled
 	 */
-	public String getStatus() {
-		return status;
+	public boolean getEnabled() {
+		return enabled;
 	}
 
 	/**
-	 * setStatus
+	 * setEnabled
 	 *
-	 * @param status the status to set
+	 * @param enabled the enabled to set
 	 */
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }

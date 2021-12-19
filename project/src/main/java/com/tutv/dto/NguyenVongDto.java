@@ -3,7 +3,7 @@
  * @date Dec 10, 2021
  * @author trinh
  */
-package dto;
+package com.tutv.dto;
 
 
 /**

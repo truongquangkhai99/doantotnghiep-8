@@ -41,15 +41,15 @@ public class TaiKhoan {
 	private String password;
 	
 	/**
-	 * Property status
+	 * Property enabled
 	 */
-	@Column(name = "status", length = 60)
-	private String status;
+	@Column(name = "enabled")
+	private boolean enabled;
 	
 	/**
 	 * Property name
 	 */
-	@Column(name = "name", nullable = false, length = 60)
+	@Column(name = "name", length = 60)
 	private String name;
 	
 	/**
@@ -61,7 +61,7 @@ public class TaiKhoan {
 	/**
 	 * Property phone
 	 */
-	@Column(name = "phone", nullable = false, length = 60)
+	@Column(name = "phone", length = 60)
 	private String phone;
 	
 	public TaiKhoan() {
@@ -76,12 +76,12 @@ public class TaiKhoan {
 		this.id = id;
 	}
 
-	public String getStatus() {
-		return status;
+	public boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getEmail() {
