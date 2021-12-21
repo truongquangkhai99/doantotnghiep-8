@@ -11,10 +11,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.TaiKhoanDAO;
@@ -33,6 +33,7 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 	 */
 	private SessionFactory sessionFactory;
 
+	
 	/**
 	 * setSessionFactory
 	 * 
@@ -40,6 +41,10 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 	 */
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
 	/**

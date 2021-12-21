@@ -11,6 +11,7 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
@@ -18,6 +19,7 @@ import javax.persistence.Transient;
  * HoSoXetTuyen
  */
 
+@Table(name = "ho_so_xet_tuyen")
 @Entity
 public class HoSoXetTuyenResponse extends EntityResponse{
 
@@ -43,7 +45,7 @@ public class HoSoXetTuyenResponse extends EntityResponse{
 	/**
 	 * Property idTruongThpt10
 	 */
-	@Column(name = "id_truong_thpt10", nullable = false, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt10", nullable = true, columnDefinition = "INT UNSIGNED")
 	private Integer idTruongThpt10;
 	
 	/**
@@ -55,7 +57,7 @@ public class HoSoXetTuyenResponse extends EntityResponse{
 	/**
 	 * Property idTruongThpt11
 	 */
-	@Column(name = "id_truong_thpt11", nullable = false, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt11", nullable = true, columnDefinition = "INT UNSIGNED")
 	private Integer idTruongThpt11;
 	
 	/**
@@ -67,7 +69,7 @@ public class HoSoXetTuyenResponse extends EntityResponse{
 	/**
 	 * Property idTruongThpt12
 	 */
-	@Column(name = "id_truong_thpt12", nullable = false, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt12", nullable = true, columnDefinition = "INT UNSIGNED")
 	private Integer idTruongThpt12;
 	
 	/**
@@ -113,6 +115,11 @@ public class HoSoXetTuyenResponse extends EntityResponse{
 	private String doiTuongUuTien;
 	
 	/**
+	 * Property gioiTinh
+	 */
+	@Column(name = "gioi_tinh", nullable = false, length = 60)
+	private String gioiTinh;
+	/**
 	 * Property soDienThoaiBo
 	 */
 	@Column(name = "so_dien_thoai_bo", nullable = false, length = 60)
@@ -143,11 +150,78 @@ public class HoSoXetTuyenResponse extends EntityResponse{
 	private String linkimg3;
 	
 	/**
+	 * Property doiTuongUuTien
+	 */
+	@Column(name = "khu_vuc_uu_tien", nullable = false, length = 60)
+	private String khuVucUuTien;
+	
+	/**
 	 * Constructor
 	 */
 	public HoSoXetTuyenResponse() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public String getKhuVucUuTien() {
+		return khuVucUuTien;
+	}
+
+
+	public void setKhuVucUuTien(String khuVucUuTien) {
+		this.khuVucUuTien = khuVucUuTien;
+	}
+
+
+	public CommonResponse getIdTaiKhoanObj() {
+		return idTaiKhoanObj;
+	}
+
+
+	public void setIdTaiKhoanObj(CommonResponse idTaiKhoanObj) {
+		this.idTaiKhoanObj = idTaiKhoanObj;
+	}
+
+
+	public CommonResponse getIdTruongThpt10Obj() {
+		return idTruongThpt10Obj;
+	}
+
+
+	public void setIdTruongThpt10Obj(CommonResponse idTruongThpt10Obj) {
+		this.idTruongThpt10Obj = idTruongThpt10Obj;
+	}
+
+
+	public CommonResponse getIdTruongThpt11Obj() {
+		return idTruongThpt11Obj;
+	}
+
+
+	public void setIdTruongThpt11Obj(CommonResponse idTruongThpt11Obj) {
+		this.idTruongThpt11Obj = idTruongThpt11Obj;
+	}
+
+
+	public CommonResponse getIdTruongThpt12Obj() {
+		return idTruongThpt12Obj;
+	}
+
+
+	public void setIdTruongThpt12Obj(CommonResponse idTruongThpt12Obj) {
+		this.idTruongThpt12Obj = idTruongThpt12Obj;
+	}
+
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+
 
 	public Integer getId() {
 		return id;

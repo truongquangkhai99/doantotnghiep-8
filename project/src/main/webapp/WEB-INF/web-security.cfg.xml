@@ -43,13 +43,21 @@
 		<beans:property name="defaultTargetUrl"
 			value="/" />
 	</beans:bean>
-	<beans:bean id="myUserDetailsService" class="com.tutv.service.UserDetailsServiceImpl"></beans:bean>
+	<beans:bean id="myUserDetailsService" class="com.tutv.service.UserDetailsServiceImpl">
+	</beans:bean>
 	
 	<authentication-manager alias="authenticationManager">
-       
-    	<authentication-provider user-service-ref="myUserDetailsService"> 
+       <authentication-provider>
+        <jdbc-user-service data-source-ref="myDataSource"
+          users-by-username-query=
+            "select email,password, enabled from tai_khoan where email=?"
+          authorities-by-username-query=
+            "select email, role from tai_khoan where email =?" />
+            <password-encoder ref="encoder" />
+      </authentication-provider>
+    	<!-- <authentication-provider user-service-ref="myUserDetailsService"> 
     		<password-encoder ref="encoder" />
-    	</authentication-provider> 
+    	</authentication-provider>  -->
     </authentication-manager>
 	<!-- <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"> 
 	</beans:bean> -->

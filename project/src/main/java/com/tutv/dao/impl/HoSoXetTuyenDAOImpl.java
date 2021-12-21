@@ -5,11 +5,21 @@
  */
 package com.tutv.dao.impl;
 
+
+import java.io.Serializable;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.HoSoXetTuyenDAO;
-
+import com.tutv.entity.HoSoXetTuyen;
 /**
  * HoSoXetTuyenDAO
  */
@@ -27,5 +37,79 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 	 */
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	/**
+	 * saveHoSo
+	 *
+	 * @param hoSoXetTuyen
+	 * @return
+	 */
+	@Override
+	public HoSoXetTuyen saveHoSo(HoSoXetTuyen hoSoXetTuyen) {
+		Session session = null;
+		Transaction tx = null;
+		try {
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			Serializable id = session.save(hoSoXetTuyen);
+			tx.commit();
+			if (session != null) {
+				session.close();
+			}
+			hoSoXetTuyen = findHoSoXetTuyenById((Integer) id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+			if (session != null) {
+				session.close();
+			}
+			return null;
+		}
+		
+		return hoSoXetTuyen;
+	}
+
+	/**
+	 * findHoSoXetTuyenById
+	 *
+	 * @param id
+	 * @return
+	 */
+	public HoSoXetTuyen findHoSoXetTuyenById(Integer id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<HoSoXetTuyen> query = builder.createQuery(HoSoXetTuyen.class);
+		Root<HoSoXetTuyen> root = query.from(HoSoXetTuyen.class);
+		Predicate p = builder.equal(root.get("id"), id);
+		query.select(root).where(p);
+		HoSoXetTuyen hoSoXetTuyen = session.createQuery(query).uniqueResult();
+		return hoSoXetTuyen;
+	}
+	
+	@Override
+	public void updateHoSo(HoSoXetTuyen hoSoXetTuyen) {
+		Session session = null;
+		Transaction tx = null;
+		try {
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			session.update(hoSoXetTuyen);
+			tx.commit();
+			if (session != null) {
+				session.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+			if (session != null) {
+				session.close();
+			}
+			
+		}
 	}
 }

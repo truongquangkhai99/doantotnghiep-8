@@ -38,28 +38,28 @@ public class HoSoXetTuyen {
 	 * Property idTaiKhoan
 	 */
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_tai_khoan", nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TAIKHOAN_HOSOXETTUYEN", foreignKeyDefinition = "foreign key (id_tai_khoan) references tai_khoan (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
+	@JoinColumn(name = "id_tai_khoan", nullable = true, foreignKey = @javax.persistence.ForeignKey(name = "FK_TAIKHOAN_HOSOXETTUYEN", foreignKeyDefinition = "foreign key (id_tai_khoan) references tai_khoan (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
 	private TaiKhoan idTaiKhoan;
 	
 	/**
 	 * Property idTruongThpt10
 	 */
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_truong_thpt10", nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN10", foreignKeyDefinition = "foreign key (id_truong_thpt10) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
+	@JoinColumn(name = "id_truong_thpt10", nullable = true, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN10", foreignKeyDefinition = "foreign key (id_truong_thpt10) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
 	private TruongThpt idTruongThpt10;
 	
 	/**
 	 * Property idTruongThpt11
 	 */
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_truong_thpt11", nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN11", foreignKeyDefinition = "foreign key (id_truong_thpt11) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
+	@JoinColumn(name = "id_truong_thpt11", nullable = true, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN11", foreignKeyDefinition = "foreign key (id_truong_thpt11) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
 	private TruongThpt idTruongThpt11;
 	
 	/**
 	 * Property idTruongThpt12
 	 */
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_truong_thpt12", nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN12", foreignKeyDefinition = "foreign key (id_truong_thpt12) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
+	@JoinColumn(name = "id_truong_thpt12", nullable = true, foreignKey = @javax.persistence.ForeignKey(name = "FK_TRUONG_HOSOXETTUYEN12", foreignKeyDefinition = "foreign key (id_truong_thpt12) references truong_thpt (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
 	private TruongThpt idTruongThpt12;
 	
 	/**
@@ -99,6 +99,12 @@ public class HoSoXetTuyen {
 	private String doiTuongUuTien;
 	
 	/**
+	 * Property doiTuongUuTien
+	 */
+	@Column(name = "khu_vuc_uu_tien", nullable = false, length = 60)
+	private String khuVucUuTien;
+	
+	/**
 	 * Property soDienThoaiBo
 	 */
 	@Column(name = "so_dien_thoai_bo", nullable = false, length = 60)
@@ -111,21 +117,27 @@ public class HoSoXetTuyen {
 	private String soDienThoaiMe;
 	
 	/**
+	 * Property gioiTinh
+	 */
+	@Column(name = "gioi_tinh", nullable = false, length = 60)
+	private String gioiTinh;
+	
+	/**
 	 * Property linkimg1
 	 */
-	@Column(name = "linkimg1", nullable = false, length = 60)
+	@Column(name = "linkimg1", nullable = true, length = 60)
 	private String linkimg1;
 	
 	/**
 	 * Property linkimg2
 	 */
-	@Column(name = "linkimg2", nullable = false, length = 60)
+	@Column(name = "linkimg2", nullable = true, length = 60)
 	private String linkimg2;
 	
 	/**
 	 * Property linkimg3
 	 */
-	@Column(name = "linkimg3", nullable = false, length = 60)
+	@Column(name = "linkimg3", nullable = true, length = 60)
 	private String linkimg3;
 	
 	/**
@@ -133,6 +145,14 @@ public class HoSoXetTuyen {
 	 */
 	public HoSoXetTuyen() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getKhuVucUuTien() {
+		return khuVucUuTien;
+	}
+
+	public void setKhuVucUuTien(String khuVucUuTien) {
+		this.khuVucUuTien = khuVucUuTien;
 	}
 
 	public Integer getId() {
@@ -262,6 +282,13 @@ public class HoSoXetTuyen {
 	public void setLinkimg3(String linkimg3) {
 		this.linkimg3 = linkimg3;
 	}
-	
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
 	
 }

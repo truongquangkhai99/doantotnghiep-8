@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.tutv.dao.TaiKhoanDAO;
+import com.tutv.entity.TaiKhoan;
 import com.tutv.response.TaiKhoanResponse;
 
 /**
@@ -27,7 +28,9 @@ import com.tutv.response.TaiKhoanResponse;
 public class UserDetailsServiceImpl implements UserDetailsService{
 
 	@Autowired
-	TaiKhoanDAO taikhoanDAO;
+	TaiKhoanDAO taiKhoanDAO;
+	@Autowired
+	private TaiKhoanService khoanService;
 	/**
 	 * loadUserByUsername
 	 *
@@ -37,21 +40,33 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		TaiKhoanResponse taiKhoan = null;
-//		taiKhoan = this.taikhoanDAO.findTaiKhoanByEmail(email);
-		try {
-			taiKhoan = this.taikhoanDAO.findTaiKhoanByEmail(email);
-		} catch (Exception e) {
-			if (email.equals("tvtu165@gmail.com")) {
-				taiKhoan = new TaiKhoanResponse();
-				taiKhoan.setEmail(email);
-				taiKhoan.setRole("ADMIN");
-				taiKhoan.setPassword("123456");
-				taiKhoan.setEnabled(true);
-			}
-		}
+		TaiKhoan taiKhoan = null;
+    taiKhoan = this.khoanService.getTaiKhoanByEmail(email);
+    TaiKhoan user = new TaiKhoan();
+    user.setEmail(taiKhoan.getEmail());
+    user.setPassword(taiKhoan.getPassword());
+    user.setEnabled(taiKhoan.getEnabled());
+    user.setRole(taiKhoan.getRole());
+//		try {
+//			taiKhoan = this.khoanService.getTaiKhoanByEmail(email);
+//		} catch (Exception e) {
+//			if (email.equals("tvtu165@gmail.com")) {
+//				taiKhoan = new TaiKhoan();
+//				taiKhoan.setEmail(email);
+//				taiKhoan.setRole("ADMIN");
+//				taiKhoan.setPassword("123456");
+//				taiKhoan.setEnabled(true);
+//			}
+//			else if (email.equals("trinhtu16051999@gmail.com")) {
+//				taiKhoan = new TaiKhoan();
+//				taiKhoan.setEmail(email);
+//				taiKhoan.setRole("USER");
+//				taiKhoan.setPassword("123456");
+//				taiKhoan.setEnabled(true);
+//			}
+//		}
 
-		if (taiKhoan == null) {
+		if (user == null) {
 			throw new UsernameNotFoundException("Email " + email + " was not found in the database");
 		}
 

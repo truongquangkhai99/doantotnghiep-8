@@ -7,7 +7,7 @@
 	<bean id="userDAO" class="com.tutv.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
-	<bean id="taikhoanDAO" class="com.tutv.dao.impl.TaiKhoanDAOImpl">
+	<bean id="taiKhoanDAO" class="com.tutv.dao.impl.TaiKhoanDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	<bean id="khoaDAO" class="com.tutv.dao.impl.KhoaDAOImpl">
@@ -16,16 +16,16 @@
 	<bean id="nganhDAO" class="com.tutv.dao.impl.NganhDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
-	<bean id="truongthptDAO" class="com.tutv.dao.impl.TruongThptDAOImpl">
+	<bean id="truongThptDAO" class="com.tutv.dao.impl.TruongThptDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	<bean id="hosoxettuyenDAO" class="com.tutv.dao.impl.HoSoXetTuyenDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
-	<bean id="tohopmonDAO" class="com.tutv.dao.impl.ToHopMonDAOImpl">
+	<bean id="toHopMonDAO" class="com.tutv.dao.impl.ToHopMonDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
-	<bean id="nguyenvongDAO" class="com.tutv.dao.impl.NguyenVongDAOImpl">
+	<bean id="nguyenVongDAO" class="com.tutv.dao.impl.NguyenVongDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 </beans>

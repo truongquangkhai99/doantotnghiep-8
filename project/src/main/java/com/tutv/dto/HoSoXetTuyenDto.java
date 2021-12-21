@@ -43,6 +43,7 @@ public class HoSoXetTuyenDto extends CommonDto{
 	 */
 	private Integer idTruongThpt12;
 	
+	private String gioiTinh;
 	/**
 	 * Property cccd
 	 */
@@ -73,6 +74,10 @@ public class HoSoXetTuyenDto extends CommonDto{
 	 */
 	private String doiTuongUuTien;
 	
+	/**
+	 * Property doiTuongUuTien
+	 */
+	private String khuVucUuTien;
 	/**
 	 * Property soDienThoaiBo
 	 */
@@ -232,6 +237,41 @@ public class HoSoXetTuyenDto extends CommonDto{
 	public void setLinkimg3(String linkimg3) {
 		this.linkimg3 = linkimg3;
 	}
-	
 
+	/**
+	 * getGioiTinh
+	 *
+	 * @return the gioiTinh
+	 */
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+	/**
+	 * setGioiTinh
+	 *
+	 * @param gioiTinh the gioiTinh to set
+	 */
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+
+	/**
+	 * getKhuVucUuTien
+	 *
+	 * @return the khuVucUuTien
+	 */
+	public String getKhuVucUuTien() {
+		return khuVucUuTien;
+	}
+
+	/**
+	 * setKhuVucUuTien
+	 *
+	 * @param khuVucUuTien the khuVucUuTien to set
+	 */
+	public void setKhuVucUuTien(String khuVucUuTien) {
+		this.khuVucUuTien = khuVucUuTien;
+	}
+	
 }

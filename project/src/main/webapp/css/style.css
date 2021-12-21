@@ -53,7 +53,74 @@
 .font-size-a ul h4{
     font-size: 16px;
 }
+/* chinh font-size chu*/
+.font-size-a a {
+    font-size: 12px;
+}
+.font-size-a ul h4{
+    font-size: 16px;
+}
+/*main-l*/
+.dm{
+    margin-top: 10px;
+    width: 100%;
+    border: solid 5px #56a4fe;
+    border-top: 22px solid #56a4fe;
+}
+ul.menu li a {
+    border-bottom: 2px solid #E7E8E6;
+    color: #626A69;
+    display: block;
+    outline: none;
+    padding: 6px 4px;
+}
+ul.menu li a span{
+    font-size: 16px;
+    color: black;
+}
+ul.menu li a span:hover{
+    font-size: 16px;
+    color: blue;
+}
+ul.menu li{
+    list-style: none;
+}
 
+
+ul li a.active {
+	color: #2C79B3;
+	font-weight: bold;
+}
+ul.menu li a:hover{
+    color: #000;
+}
+.box-check {
+    border-top: solid 22px #56a4fe;
+    border-left: solid 5px #56a4fe;
+    border-right: solid 5px #56a4fe;
+    border-bottom: solid 5px #56a4fe;
+    font-size: 12px;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+/*main-r*/
+.daumuc{
+    padding-top: 10px;
+}
+
+.daumuc a h3,.daumuc h3{
+    padding-top: 5px;
+    display: block;
+    height: 33px;
+    background:#56a4fe;
+    border-bottom: 1px solid #E7E8E6;
+    color: #FFFFFF;
+    font-size: 120%;
+}
 /*footer*/
 .copyandmxh{
     display: flex;
@@ -131,7 +198,7 @@ padding-top: 20px !important;
 }
 
 /* login.css */
-/* body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif;}
 .logo{
     float: left;
     margin: 20px;
@@ -203,4 +270,4 @@ span .pass {
 }
 .value input{
   height: 25px;
-} */
+}

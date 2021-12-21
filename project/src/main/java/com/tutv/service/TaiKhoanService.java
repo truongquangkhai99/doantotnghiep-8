@@ -27,6 +27,11 @@ public class TaiKhoanService {
 		return user;
 	}
 
+	public TaiKhoan getTaiKhoanByEmail (String email) {
+		int id = taikhoanDAO.findTaiKhoanByEmail(email).getId();
+		TaiKhoan user = taikhoanDAO.findTaiKhoanById(id);
+		return user;
+	}
 	/**
 	 * saveTaiKhoan
 	 *
@@ -44,7 +49,7 @@ public class TaiKhoanService {
 		}
 		// store user
 		taiKhoan.setEnabled(false);
-		taiKhoan.setRole("USER");
+		taiKhoan.setRole("ROLE_USER");
 		return taikhoanDAO.createTaiKhoanAccount(taiKhoan);
 	}
 
