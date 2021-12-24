@@ -1,5 +1,38 @@
+function myFunction(){
+	$(".form-control").prop('disabled', false);
+}
+function myCancel(){
+	$(".form-control").prop('disabled', true);
+}
 $(document).ready(function() {	
 	
+	function loadData(){
+		$.ajax({
+			url: "/hoso",
+			type: "GET",
+			contentType:"application/json; charset=utf-8",
+			dataType:"json",
+			success: function (data) {
+				if (data.id != null) {
+					for (const [key, value] of Object.entries(data)) {
+						
+						$("input[name='"+ key +"']").val(value);
+						//$("option[name='"+ key +"']").val(value);
+						$("select[name^="+ key +"] option[value="+ value +"]").attr("selected","selected");
+					}
+					
+					$("input[name='ngaySinh']").val(new Date(data.ngaySinh + (3600 * 1000 * 24)).toJSON().split('T')[0]);
+					$(".form-control").prop('disabled', true);
+				}
+				
+				// for (const x in data) {
+				// 	text += data[x] + ", ";
+				// 	$("input[name='']").val("your value");
+				//   }
+			}
+		  	});
+	};
+	loadData();
 	$("#formhoso").extend(jQuery.validator.messages, {
 		required: "Trường Không được bỏ trống. Vui lòng Điền Chính Xác Giá Trị",
 	});

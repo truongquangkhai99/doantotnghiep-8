@@ -6,14 +6,7 @@
     http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
     id="WebApp_ID" version="3.1">
     <display-name>project</display-name>
-    <!-- DispatcherServlet in xml, another way, view SpringWebApplication.java -->
-	<servlet>
-       <servlet-name>spring-mvc</servlet-name>
-       <servlet-class>
-           org.springframework.web.servlet.DispatcherServlet
-       </servlet-class>
-       <load-on-startup>1</load-on-startup>
-   	</servlet>
+   
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
         <url-pattern>/</url-pattern>
@@ -31,6 +24,14 @@
           <!--  /WEB-INF/mail-bean.xml -->
          </param-value>
    </context-param>
+    <!-- DispatcherServlet in xml, another way, view SpringWebApplication.java -->
+	<servlet>
+       <servlet-name>spring-mvc</servlet-name>
+       <servlet-class>
+           org.springframework.web.servlet.DispatcherServlet
+       </servlet-class>
+       <load-on-startup>1</load-on-startup>
+   	</servlet>
 <!--  Spring ContextLoaderListener -->
    <listener>
        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

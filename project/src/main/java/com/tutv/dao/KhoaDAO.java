@@ -22,12 +22,14 @@ public interface KhoaDAO {
 
 	public KhoaResponse getKhoaById(Integer id);
 	
-	public List<KhoaResponse> KhoaList();
-
+	public List<KhoaResponse> getListKhoa();
+	
 	public Khoa createKhoa(Khoa khoa);
 
 	public Khoa updateKhoa(Khoa khoa);
 
 	public boolean destroyKhoa(Khoa Khoa);
+
+
 	
 }

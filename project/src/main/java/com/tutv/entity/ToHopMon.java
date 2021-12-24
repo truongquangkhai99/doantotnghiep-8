@@ -35,7 +35,7 @@ public class ToHopMon {
 	/**
 	 * Property maToHopMon
 	 */
-	@Column(name = "ma_to_hop_mon", nullable = false, length = 60, unique = true)
+	@Column(name = "ma_to_hop_mon", nullable = false, length = 60)
 	private String maToHopMon;
 	
 	/**

@@ -32,7 +32,7 @@ public class NganhResponse {
 	/**
 	 * Property tenNganh
 	 */
-	@Column(name = "ten_nganh", nullable = false, length = 60, unique = true)
+	@Column(name = "ten_nganh", nullable = false, length = 60)
 	private String tenNganh;
 	
 	/**

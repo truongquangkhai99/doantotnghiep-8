@@ -56,6 +56,7 @@
    <!-- main -->
       <main>
         <form id ="formhoso" class = "border border-primary m-3 p-3">
+         <input name = "id" id = "id" type = "hidden"/>
           <div class="row m-3 p-3">
             <div class="col-6">
               <label>Họ Tên</label>
@@ -151,15 +152,24 @@
             </div>
           </div>
           <div class="row m-3 p-3">
-            <div class="col-10">
+            <div class="col-9">
+            </div>
+            <div class="col-1">
             </div>
             <div class="col-2">
-              <button type="submit" class="btn btn-primary">Lưu</button>
+              <button type="submit" class="btn btn-primary form-control">Lưu</button>
             </div>
           </div>
            
         </form>
- 
+        <div class="row m-3 p-3">
+          <div class="col-6">
+            <button onclick="myFunction()" class="btn btn-primary form-control-update">Chỉnh sửa</button>
+          </div>
+          <div class="col-6">
+            <button onclick="myCancel()" class="btn btn-primary form-control">Hủy Chỉnh Sửa</button>
+          </div>
+        </div>
       </main>
           
       <!-- footer -->

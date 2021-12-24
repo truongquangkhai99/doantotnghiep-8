@@ -25,6 +25,7 @@ public interface TaiKhoanDAO {
 
 	public boolean createTaiKhoanAccount(TaiKhoan taikhoan);
 
+//	active taikhoan
 	public Boolean updateTaiKhoan(String email);
 
 	public boolean destroyTaiKhoan(TaiKhoan taikhoan);

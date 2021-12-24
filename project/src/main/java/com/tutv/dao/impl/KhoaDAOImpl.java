@@ -55,7 +55,7 @@ public class KhoaDAOImpl implements KhoaDAO{
 		Root<Khoa> root = query.from(Khoa.class);
 		Predicate p = builder.equal(root.get("id"), id);
 		query.select(root).where(p);
-		Khoa khoa = session.createQuery(query).uniqueResult();
+		Khoa khoa = session.createQuery(query).setMaxResults(1).uniqueResult();
 		return khoa;
 	}
 
@@ -73,25 +73,8 @@ public class KhoaDAOImpl implements KhoaDAO{
 		Root<KhoaResponse> root = query.from(KhoaResponse.class);
 		Predicate p = builder.equal(root.get("id"), id);
 		query.select(root).where(p);
-		KhoaResponse khoa = session.createQuery(query).uniqueResult();
+		KhoaResponse khoa = session.createQuery(query).setMaxResults(1).uniqueResult();
 		return khoa;
-	}
-
-	/**
-	 * KhoaList
-	 *
-	 * @return
-	 */
-	@Override
-	public List<KhoaResponse> KhoaList() {
-		Session session = this.sessionFactory.getCurrentSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<KhoaResponse> query = builder.createQuery(KhoaResponse.class);
-		Root<KhoaResponse> root = query.from(KhoaResponse.class);
-		//Predicate p = builder.equal(root.get("id"), id);
-		query.select(root);
-		List<KhoaResponse> khoalist = session.createQuery(query).getResultList();
-		return khoalist;
 	}
 
 	/**
@@ -185,5 +168,22 @@ public class KhoaDAOImpl implements KhoaDAO{
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * getListKhoa
+	 *
+	 * @return
+	 */
+	@Override
+	public List<KhoaResponse> getListKhoa() {
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<KhoaResponse> query = builder.createQuery(KhoaResponse.class);
+		Root<KhoaResponse> root = query.from(KhoaResponse.class);
+		//Predicate p = builder.equal(root.get("id"), id);
+		query.select(root);
+		List<KhoaResponse> khoalist = session.createQuery(query).getResultList();
+		return khoalist;
 	}
 }

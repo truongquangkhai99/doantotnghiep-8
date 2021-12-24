@@ -13,7 +13,7 @@ import javax.persistence.Id;
  * Khoa
  */
 @Entity
-public class KhoaResponse {
+public class KhoaResponse extends CommonResponse{
 
 	/**
 	 * Property id

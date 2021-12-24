@@ -7,6 +7,7 @@ package com.tutv.dao.impl;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -20,6 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.HoSoXetTuyenDAO;
 import com.tutv.entity.HoSoXetTuyen;
+import com.tutv.response.HoSoXetTuyenResponse;
+import com.tutv.response.KhoaResponse;
 /**
  * HoSoXetTuyenDAO
  */
@@ -85,7 +88,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 		Root<HoSoXetTuyen> root = query.from(HoSoXetTuyen.class);
 		Predicate p = builder.equal(root.get("id"), id);
 		query.select(root).where(p);
-		HoSoXetTuyen hoSoXetTuyen = session.createQuery(query).uniqueResult();
+		HoSoXetTuyen hoSoXetTuyen = session.createQuery(query).setMaxResults(1).uniqueResult();
 		return hoSoXetTuyen;
 	}
 	
@@ -111,5 +114,39 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 			}
 			
 		}
+	}
+
+	/**
+	 * getListHoSo
+	 *
+	 * @return
+	 */
+	@Override
+	public List<HoSoXetTuyenResponse> getListHoSo() {
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<HoSoXetTuyenResponse> query = builder.createQuery(HoSoXetTuyenResponse.class);
+		Root<HoSoXetTuyenResponse> root = query.from(HoSoXetTuyenResponse.class);
+		//Predicate p = builder.equal(root.get("id"), id);
+		query.select(root);
+		List<HoSoXetTuyenResponse> khoalist = session.createQuery(query).getResultList();
+		return khoalist;
+	}
+
+	/**
+	 * getHoSo
+	 *
+	 * @return
+	 */
+	@Override
+	public HoSoXetTuyenResponse getHoSo(Integer idTaiKhoan) {
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<HoSoXetTuyenResponse> query = builder.createQuery(HoSoXetTuyenResponse.class);
+		Root<HoSoXetTuyenResponse> root = query.from(HoSoXetTuyenResponse.class);
+		Predicate p = builder.equal(root.get("idTaiKhoan"), idTaiKhoan);
+		query.select(root).where(p);
+		HoSoXetTuyenResponse hoSoXetTuyen = session.createQuery(query).setMaxResults(1).uniqueResult();
+		return hoSoXetTuyen;
 	}
 }

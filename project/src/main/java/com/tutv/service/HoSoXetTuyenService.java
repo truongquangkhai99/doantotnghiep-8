@@ -5,6 +5,8 @@
  */
 package com.tutv.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,9 +33,11 @@ public class HoSoXetTuyenService {
 	 * @param string
 	 * @return
 	 */
-	public HoSoXetTuyenResponse getHoSo(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public HoSoXetTuyenResponse getHoSo() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String email = auth.getName();
+		Integer idTaiKhoan = taiKhoanService.getTaiKhoan(email).getId();
+		return hoSoXetTuyenDAO.getHoSo(idTaiKhoan);
 	}
 
 	/**
@@ -96,6 +100,16 @@ public class HoSoXetTuyenService {
 		hoSoXetTuyen.setSoDienThoaiMe(hoSoXetTuyenDto.getSoDienThoaiMe());
 		HoSoXetTuyen hoSoXetTuyen2 = hoSoXetTuyenDAO.saveHoSo(hoSoXetTuyen);
 		return hoSoXetTuyen2;
+	}
+
+	/**
+	 * getListHoSo
+	 *
+	 * @return
+	 */
+	public List<HoSoXetTuyenResponse> getListHoSo() {
+		// TODO Auto-generated method stub
+		return hoSoXetTuyenDAO.getListHoSo();
 	}
 
 }
