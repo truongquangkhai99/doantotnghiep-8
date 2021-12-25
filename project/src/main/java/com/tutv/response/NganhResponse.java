@@ -8,11 +8,13 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 /**
  * Nganh
  */
 
+@Table(name = "nganh")
 @Entity
 public class NganhResponse extends EntityResponse{
 	

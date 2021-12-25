@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tutv.dao.NguyenVongDAO;
-import com.tutv.dao.NguyenVongDAO;
 import com.tutv.dto.NguyenVongDto;
 import com.tutv.entity.NguyenVong;
 import com.tutv.response.NguyenVongResponse;
@@ -21,6 +20,7 @@ import com.tutv.response.NguyenVongResponse;
  */
 @Service
 public class NguyenVongService {
+	
 	@Autowired 
 	NguyenVongDAO nguyenVongDao;
 

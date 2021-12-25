@@ -55,52 +55,47 @@
       </div>
    <!-- main -->
       <main>
-          <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
+        <form id ="formhoso" class = "border border-primary m-3 p-3">
+         <input name = "id" id = "id" type = "hidden"/>
+          <div class="row m-3 p-3">
+            <div class="col-3">
+              <label">Ngành</label>
+              <select class="form-control" id="idnganh">
+                <option></option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label">Tổ Hợp Môn</label>
+              <select class="form-control" id="idToHopMon" name="idToHopMon">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="row m-3 p-3">
+            <div class="col-3">
+              <label>Điểm Trung Bình Môn Học Thứ Nhất</label>
+              <input type="number" class="form-control" name="diemtbMonMot" placeholder="Điểm Trung Bình Môn Học Thứ Nhất">
+            </div>
+            <div class="col-3">
+              <label>Điểm Trung Bình Môn Học Thứ Hai</label>
+              <input type="number" class="form-control" name="diemtbMonHai" placeholder="Điểm Trung Bình Môn Học Thứ Hai">
+            </div>            
+            <div class="col-3">
+              <label>Điểm Trung Bình Môn Học Thứ Ba</label>
+              <input type="number" class="form-control" name="diemtbMonBa" placeholder="Điểm Trung Bình Môn Học Thứ Ba">
+            </div>
+          </div>
+          <div class="row m-3 p-3">
+            <div class="col-9">
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary form-control">Lưu</button>
+            </div>
+          </div>
+           
+        </form>
       </main>
           
       <!-- footer -->
@@ -153,5 +148,7 @@
 <script type='text/javascript' src='<c:url value="/js/jquery-3.5.1.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/tohopmon.js" />'></script>
 </body>
 </html>

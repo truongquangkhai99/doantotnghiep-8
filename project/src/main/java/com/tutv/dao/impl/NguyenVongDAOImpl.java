@@ -58,8 +58,8 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 		Root<NguyenVong> root = query.from(NguyenVong.class);
 		Predicate p = builder.equal(root.get("id"), id);
 		query.select(root).where(p);
-		NguyenVong khoa = session.createQuery(query).setMaxResults(1).uniqueResult();
-		return khoa;
+		NguyenVong nguyenVong = session.createQuery(query).setMaxResults(1).uniqueResult();
+		return nguyenVong;
 	}
 
 	/**
@@ -76,29 +76,29 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 		Root<NguyenVongResponse> root = query.from(NguyenVongResponse.class);
 		Predicate p = builder.equal(root.get("id"), id);
 		query.select(root).where(p);
-		NguyenVongResponse khoa = session.createQuery(query).setMaxResults(1).uniqueResult();
-		return khoa;
+		NguyenVongResponse nguyenVong = session.createQuery(query).setMaxResults(1).uniqueResult();
+		return nguyenVong;
 	}
 
 	/**
 	 * createNguyenVong
 	 *
-	 * @param khoa
+	 * @param nguyenVong
 	 * @return
 	 */
 	@Override
-	public NguyenVong createNguyenVong(NguyenVong khoa) {
+	public NguyenVong createNguyenVong(NguyenVong nguyenVong) {
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			Serializable id = session.save(khoa);
+			Serializable id = session.save(nguyenVong);
 			tx.commit();
 			if (session != null) {
 				session.close();
 			}
-			khoa = findNguyenVongById((Integer) id);
+			nguyenVong = findNguyenVongById((Integer) id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null) {
@@ -110,23 +110,23 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 			return null;
 		}
 		
-		return khoa;
+		return nguyenVong;
 	}
 
 	/**
 	 * updateNguyenVong
 	 *
-	 * @param khoa
+	 * @param nguyenVong
 	 * @return
 	 */
 	@Override
-	public NguyenVong updateNguyenVong(NguyenVong khoa) {
+	public NguyenVong updateNguyenVong(NguyenVong nguyenVong) {
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			session.update(khoa);
+			session.update(nguyenVong);
 			tx.commit();
 			if (session != null) {
 				session.close();
@@ -142,7 +142,7 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 			return null;
 		}
 		
-		return khoa;
+		return nguyenVong;
 	}
 
 	/**
@@ -152,13 +152,13 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 	 * @return
 	 */
 	@Override
-	public boolean destroyNguyenVong(NguyenVong khoa) {
+	public boolean destroyNguyenVong(NguyenVong nguyenVong) {
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			session.delete(khoa);
+			session.delete(nguyenVong);
 			tx.commit();
 			if (session != null) {
 				session.close();
@@ -184,9 +184,10 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<NguyenVongResponse> query = builder.createQuery(NguyenVongResponse.class);
 		Root<NguyenVongResponse> root = query.from(NguyenVongResponse.class);
-		Predicate p = builder.equal(root.get("idHoSoXetTuyen"), hoSoXetTuyenService.getHoSo().getId());
-		query.select(root).where(p);
-		List<NguyenVongResponse> khoalist = session.createQuery(query).getResultList();
-		return khoalist;
+//		Predicate p = builder.equal(root.get("idHoSoXetTuyen"), hoSoXetTuyenService.getHoSo().getId());
+//		query.select(root).where(p);
+		query.select(root);
+		List<NguyenVongResponse> nguyenVonglist = session.createQuery(query).getResultList();
+		return nguyenVonglist;
 	}
 }

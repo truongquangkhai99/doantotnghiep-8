@@ -210,8 +210,14 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 	 */
 	@Override
 	public List<TaiKhoanResponse> taikhoanList() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<TaiKhoanResponse> query = builder.createQuery(TaiKhoanResponse.class);
+		Root<TaiKhoanResponse> root = query.from(TaiKhoanResponse.class);
+		//Predicate p = builder.equal(root.get("idNganh"), idNganh);
+		query.select(root);
+		List<TaiKhoanResponse> taiKhoanlist = session.createQuery(query).getResultList();
+		return taiKhoanlist;
 	}
 
 }

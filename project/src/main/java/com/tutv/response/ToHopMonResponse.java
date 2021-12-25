@@ -8,12 +8,14 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
  * ToHopMon
  */
 
+@Table(name = "to_hop_mon")
 @Entity
 public class ToHopMonResponse extends EntityResponse{
 
