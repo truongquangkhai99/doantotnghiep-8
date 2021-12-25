@@ -8,12 +8,14 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Khoa
  */
+@Table(name = "khoa")
 @Entity
-public class KhoaResponse extends CommonResponse{
+public class KhoaResponse extends EntityResponse{
 
 	/**
 	 * Property id

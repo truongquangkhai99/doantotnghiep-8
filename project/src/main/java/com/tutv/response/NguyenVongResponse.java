@@ -8,14 +8,15 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
  * NguyenVong
  */
-
 @Entity
-public class NguyenVongResponse {
+@Table(name = "nguyen_vong")
+public class NguyenVongResponse extends EntityResponse{
 
 	/**
 	 * Property id
@@ -133,6 +134,5 @@ public class NguyenVongResponse {
 	public void setIdToHopMonObj(CommonResponse idToHopMonObj) {
 		this.idToHopMonObj = idToHopMonObj;
 	}
-	
-	
+
 }

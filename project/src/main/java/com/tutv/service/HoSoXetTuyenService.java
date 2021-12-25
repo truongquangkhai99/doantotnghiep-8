@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.tutv.dao.HoSoXetTuyenDAO;
+import com.tutv.dao.TruongThptDAO;
 import com.tutv.dto.HoSoXetTuyenDto;
 import com.tutv.entity.HoSoXetTuyen;
 import com.tutv.response.HoSoXetTuyenResponse;
@@ -27,6 +28,8 @@ public class HoSoXetTuyenService {
 	HoSoXetTuyenDAO hoSoXetTuyenDAO;
 	@Autowired
 	private TaiKhoanService taiKhoanService;
+	
+	@Autowired TruongThptDAO truongThptDAO;
 	/**
 	 * getHoSo
 	 *
@@ -81,24 +84,23 @@ public class HoSoXetTuyenService {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     String email = auth.getName();
-    taiKhoanService.getTaiKhoan(email);
     
-		HoSoXetTuyen hoSoXetTuyen = new HoSoXetTuyen();
+		HoSoXetTuyen hoSoXetTuyen = hoSoXetTuyenDAO.getHoSoXetTuyenById(hoSoXetTuyenDto.getId());
 		hoSoXetTuyen.setHoTen(hoSoXetTuyenDto.getHoTen());
 		hoSoXetTuyen.setCccd(hoSoXetTuyenDto.getCccd());
 		hoSoXetTuyen.setDiaChi(hoSoXetTuyenDto.getDiaChi());
 		hoSoXetTuyen.setDoiTuongUuTien(hoSoXetTuyenDto.getDoiTuongUuTien());
 		hoSoXetTuyen.setGioiTinh(hoSoXetTuyenDto.getGioiTinh());
 		hoSoXetTuyen.setIdTaiKhoan(taiKhoanService.getTaiKhoanByEmail(email));
-//		hoSoXetTuyen.setIdTruongThpt10(hoSoXetTuyenDto.getIdTruongThpt10());
-//		hoSoXetTuyen.setIdTruongThpt11(hoSoXetTuyenDto.getIdTruongThpt11());
-//		hoSoXetTuyen.setIdTruongThpt12(hoSoXetTuyenDto.getIdTruongThpt12());
+		hoSoXetTuyen.setIdTruongThpt10(truongThptDAO.findTruongThptById(hoSoXetTuyenDto.getIdTruongThpt10()));
+		hoSoXetTuyen.setIdTruongThpt11(truongThptDAO.findTruongThptById(hoSoXetTuyenDto.getIdTruongThpt11()));
+		hoSoXetTuyen.setIdTruongThpt12(truongThptDAO.findTruongThptById(hoSoXetTuyenDto.getIdTruongThpt12()));
 		hoSoXetTuyen.setKhuVucUuTien(hoSoXetTuyenDto.getKhuVucUuTien());
 		hoSoXetTuyen.setNgaySinh(hoSoXetTuyenDto.getNgaySinh());
 		hoSoXetTuyen.setSoDienThoai(hoSoXetTuyenDto.getSoDienThoai());
 		hoSoXetTuyen.setSoDienThoaiBo(hoSoXetTuyenDto.getSoDienThoaiBo());
 		hoSoXetTuyen.setSoDienThoaiMe(hoSoXetTuyenDto.getSoDienThoaiMe());
-		HoSoXetTuyen hoSoXetTuyen2 = hoSoXetTuyenDAO.saveHoSo(hoSoXetTuyen);
+		HoSoXetTuyen hoSoXetTuyen2 = hoSoXetTuyenDAO.updateHoSo(hoSoXetTuyen);
 		return hoSoXetTuyen2;
 	}
 

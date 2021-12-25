@@ -18,27 +18,14 @@ import com.tutv.response.HoSoXetTuyenResponse;
 @Repository
 public interface HoSoXetTuyenDAO {
 
-	/**
-	 * saveHoSo
-	 *
-	 * @param hoSoXetTuyen
-	 * @return
-	 */
+	HoSoXetTuyen getHoSoXetTuyenById(Integer id);
+
 	HoSoXetTuyen saveHoSo(HoSoXetTuyen hoSoXetTuyen);
 
-	/**
-	 * updateHoSo
-	 *
-	 * @param hoSoXetTuyen
-	 * @return
-	 */
-	void updateHoSo(HoSoXetTuyen hoSoXetTuyen);
 
-	/**
-	 * getListHoSo
-	 *
-	 * @return
-	 */
+	HoSoXetTuyen updateHoSo(HoSoXetTuyen hoSoXetTuyen);
+
+
 	List<HoSoXetTuyenResponse> getListHoSo();
 	
 	HoSoXetTuyenResponse getHoSo(Integer idTaiKhoan);

@@ -7,8 +7,10 @@ package com.tutv.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tutv.dao.TruongThptDAO;
 import com.tutv.dto.TruongThptDto;
 import com.tutv.entity.TruongThpt;
 import com.tutv.response.KhoaResponse;
@@ -20,6 +22,8 @@ import com.tutv.response.TruongThptResponse;
 @Service
 public class TruongThptService {
 
+	@Autowired
+	TruongThptDAO truongThptDAO;
 	/**
 	 * getTruongThpt
 	 *
@@ -37,8 +41,8 @@ public class TruongThptService {
 	 * @return
 	 */
 	public List<TruongThptResponse> getListTruongThpt() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return truongThptDAO.getListTruongThpt();
 	}
 
 	/**

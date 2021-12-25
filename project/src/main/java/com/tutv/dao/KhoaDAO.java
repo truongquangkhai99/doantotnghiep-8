@@ -29,7 +29,4 @@ public interface KhoaDAO {
 	public Khoa updateKhoa(Khoa khoa);
 
 	public boolean destroyKhoa(Khoa Khoa);
-
-
-	
 }

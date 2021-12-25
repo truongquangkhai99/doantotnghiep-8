@@ -8,13 +8,15 @@ package com.tutv.response;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * TruongThpt
  */
 
 @Entity
-public class TruongThptResponse {
+@Table(name = "truong_thpt")
+public class TruongThptResponse extends EntityResponse{
 
 	/**
 	 * Property id

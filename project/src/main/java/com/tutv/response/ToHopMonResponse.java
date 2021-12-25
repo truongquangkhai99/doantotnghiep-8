@@ -15,7 +15,7 @@ import javax.persistence.Transient;
  */
 
 @Entity
-public class ToHopMonResponse {
+public class ToHopMonResponse extends EntityResponse{
 
 	/**
 	 * Property id

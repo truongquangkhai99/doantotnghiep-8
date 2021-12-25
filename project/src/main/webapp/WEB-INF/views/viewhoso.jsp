@@ -131,23 +131,22 @@
             <label class="col-12">Trường THPT</label>
             <div class="col-3">
               <label>Lớp 10: </label>
-              <select class="form-control" id="idTruongTpht10" name="idTruongTpht10">
+              <select class="form-control TruongThpt" id="idTruongThpt10" name="idTruongThpt10">
                 <option></option>
-                <option value="idTruongTpht10">tenTruong</option>
               </select>
             </div>
             <div class="col-3">
               <label>Lớp 11: </label>
-              <select class="form-control" id="idTruongTpht11" name="idTruongTpht11">
+              <select class="form-control TruongThpt" id="idTruongThpt11" name="idTruongThpt11">
                 <option></option>
-                <option value="idTruongTpht11">tenTruong</option>
+               
               </select>
             </div>
             <div class="col-3">
               <label>Lớp 12: </label>
-              <select class="form-control" id="idTruongTpht12" name="idTruongTpht12">
+              <select class="form-control TruongThpt" id="idTruongThpt12" name="idTruongThpt12">
                 <option></option>
-                <option value="idTruongTpht12">tenTruong</option>
+                
               </select>
             </div>
           </div>

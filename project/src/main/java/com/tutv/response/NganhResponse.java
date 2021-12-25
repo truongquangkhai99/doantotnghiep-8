@@ -14,7 +14,7 @@ import javax.persistence.Transient;
  */
 
 @Entity
-public class NganhResponse {
+public class NganhResponse extends EntityResponse{
 	
 	/**
 	 * Property id

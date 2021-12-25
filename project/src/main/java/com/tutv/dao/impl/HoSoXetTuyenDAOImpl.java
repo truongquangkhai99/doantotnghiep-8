@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tutv.dao.HoSoXetTuyenDAO;
 import com.tutv.entity.HoSoXetTuyen;
 import com.tutv.response.HoSoXetTuyenResponse;
-import com.tutv.response.KhoaResponse;
 /**
  * HoSoXetTuyenDAO
  */
@@ -93,7 +92,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 	}
 	
 	@Override
-	public void updateHoSo(HoSoXetTuyen hoSoXetTuyen) {
+	public HoSoXetTuyen updateHoSo(HoSoXetTuyen hoSoXetTuyen) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -104,6 +103,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 			if (session != null) {
 				session.close();
 			}
+			return hoSoXetTuyen;
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null) {
@@ -112,7 +112,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 			if (session != null) {
 				session.close();
 			}
-			
+			return null;
 		}
 	}
 
@@ -147,6 +147,24 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 		Predicate p = builder.equal(root.get("idTaiKhoan"), idTaiKhoan);
 		query.select(root).where(p);
 		HoSoXetTuyenResponse hoSoXetTuyen = session.createQuery(query).setMaxResults(1).uniqueResult();
+		return hoSoXetTuyen;
+	}
+
+	/**
+	 * getHoSoXetTuyenById
+	 *
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public HoSoXetTuyen getHoSoXetTuyenById(Integer id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<HoSoXetTuyen> query = builder.createQuery(HoSoXetTuyen.class);
+		Root<HoSoXetTuyen> root = query.from(HoSoXetTuyen.class);
+		Predicate p = builder.equal(root.get("id"), id);
+		query.select(root).where(p);
+		HoSoXetTuyen hoSoXetTuyen = session.createQuery(query).setMaxResults(1).uniqueResult();
 		return hoSoXetTuyen;
 	}
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tutv.dto.HoSoXetTuyenDto;
-import com.tutv.dto.TaiKhoanDto;
 import com.tutv.entity.HoSoXetTuyen;
 import com.tutv.response.EntityResponse;
 import com.tutv.response.HoSoXetTuyenResponse;
