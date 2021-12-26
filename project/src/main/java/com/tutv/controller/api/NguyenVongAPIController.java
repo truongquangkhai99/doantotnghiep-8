@@ -26,27 +26,27 @@ import com.tutv.service.NguyenVongService;
  */
 @Controller
 @ResponseBody
-public class NguyenVongAPUController {
+public class NguyenVongAPIController {
 	
 	@Autowired
-	private NguyenVongService khoaService;
+	private NguyenVongService nguyenVongService;
 	
 	@RequestMapping(value = "nguyenvong", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String showHoSo(@RequestBody NguyenVongDto khoaDto) throws Exception {
-		NguyenVongResponse khoa = khoaService.getNguyenVong(khoaDto.getId());
+	public String showHoSo(@RequestBody NguyenVongDto nguyenVongDto) throws Exception {
+		NguyenVongResponse khoa = nguyenVongService.getNguyenVong(nguyenVongDto.getId());
 		return khoa.toJson();
 	}
 	
 	@RequestMapping(value = "nguyenvongs", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String listNguyenVong() throws Exception {
-		List<NguyenVongResponse> khoa = khoaService.getListNguyenVong();
+		List<NguyenVongResponse> khoa = nguyenVongService.getListNguyenVong();
 		return EntityResponse.toJson(khoa);
 	}
 	
 	@RequestMapping(value = "nguyenvong", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String createNguyenVong(@RequestBody NguyenVongDto khoaDto) throws Exception {
+	public String createNguyenVong(@RequestBody NguyenVongDto nguyenVongDto) throws Exception {
 		
-		NguyenVong kq = khoaService.saveNguyenVong(khoaDto);
+		NguyenVong kq = nguyenVongService.saveNguyenVong(nguyenVongDto);
 		if (kq != null) {
 			return "{\"kq\":\"ok\"}";
 		}
@@ -56,9 +56,9 @@ public class NguyenVongAPUController {
 	}
 	
 	@RequestMapping(value = "nguyenvong", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String updateHoSo(@RequestBody NguyenVongDto khoaDto) throws Exception {
+	public String updateHoSo(@RequestBody NguyenVongDto nguyenVongDto) throws Exception {
 		
-		NguyenVong kq = khoaService.updateNguyenVong(khoaDto);
+		NguyenVong kq = nguyenVongService.updateNguyenVong(nguyenVongDto);
 		if (kq != null) {
 			return "{\"kq\":\"ok\"}";
 		}

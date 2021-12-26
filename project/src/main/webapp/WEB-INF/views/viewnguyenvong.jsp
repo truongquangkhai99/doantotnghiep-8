@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Nguyện Vọng</title>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
 <link rel="stylesheet" href="<c:url value='/css/style.css' />" />
 </head>
 <body>
@@ -96,6 +97,23 @@
           </div>
            
         </form>
+
+        <table id="example" class="display" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <!-- <th>idNganh</th>
+                  <th>Tên Ngành</th> -->
+                  <th>idToHopMon</th>
+                  <!-- <th>Mã Tổ hợp môn</th> -->
+                  <th>Điểm trung bình môn thứ 1</th>
+                  <th>Điểm trung bình môn thứ 2</th>
+                  <th>Điểm trung bình môn thứ 3</th>
+              </tr>
+          </thead>
+          
+      </table>
+      
       </main>
           
       <!-- footer -->
@@ -149,6 +167,7 @@
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
-<script type='text/javascript' src='<c:url value="/js/tohopmon.js" />'></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type='text/javascript' src='<c:url value="/js/nguyenvong.js" />'></script>
 </body>
 </html>
