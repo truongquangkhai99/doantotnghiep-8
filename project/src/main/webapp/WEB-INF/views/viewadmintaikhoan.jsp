@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>	
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,21 +21,28 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="/user/hoso">Home</a>
+                <a class="nav-link active" href="/admin/khoa">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/user/hoso">Thông tin Hồ Sơ</a>
+                <a class="nav-link" href="/admin/khoa">Quản Lý Khoa</a>
               </li>
               
               <li class="nav-item">
-                  <a class="nav-link" href="/user/nguyenvong">Danh Sách Nguyện Vọng</a>
+                <a class="nav-link" href="/admin/nganh">Quản Lý Ngành</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/tohopmon">Quản Lý Tổ Hợp Môn</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/user/file">File Hồ Sơ Kèm Theo</a>
+                <a class="nav-link" href="/admin/truongthpt">Quản Lý Trường Thpt</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/taikhoan">Quản Lý Tài Khoản</a>
               </li>
               <li class="nav-item">
               		<c:if test="${not empty user.username}">
@@ -58,38 +64,82 @@
    <!-- main -->
       <main>
       <div class="p-3 mt-3 text-center">
-        <h3>File Đính Kèm</h3>
+        <h3>Quản Lý Tài Khoản</h3>
       </div>
-        <form:form method="POST" action="${pageContext.request.contextPath}/user/uploadFile" enctype="multipart/form-data" modelAttribute="myFile" class = "border border-primary m-3 p-3">
-        <div class="row m-3 p-3">
-          <div class="col-12">
-              File : <br />
+        <form id ="formhoso" class = "border border-primary m-3 p-3">
+         <input name = "id" id = "id" type = "hidden"/>
+          <div class="row m-3 p-3">
+            <div class="col-3">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="col-3">
+              <label>Name</label>
+              <input type="text" class="form-control" name="name" placeholder="Name">
+            </div>     
+             <div class="col-3">
+              <label>Password</label>
+              <input type="text" class="form-control" name="password" placeholder="Password">
+            </div>                   
           </div>
-          <div class="col-12">
-              <input type="file" name="multipartFile" /> <br />
-          </div>
-          <div class="col-12">
-            <p>
-          </div>
-          <div class="col-2">
-              <button type="submit" id = "btnAddUpdate" class="btn btn-primary form-control">Tải lên</button>
-          </div>
-        </div>
-        </form:form>
+          <div class="row m-3 p-3">
+            <div class="col-3">
+              <label>Phone</label>
+              <input type="number" class="form-control" name="phone" placeholder="Email">
+            </div>
+            <div class="col-3">
+              <label>Vai Trò</label>
+              <select class="form-control" id="role" name="role">
+                <option></option>
+                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                <option value="ROLE_USER">ROLE_USER</option>
+                <option value="ROLE_QTV">ROLE_QTV</option>
+              </select>
+            </div>
 
-        <div class="m-3 p-4 row">
-          <div class="p-3 m-3 text-center col-12">
-            <h5>File Đính Kèm Của Bạn</h5>
+            <div class="col-3">
+              <label>Trạng Thái</label>
+              <select class="form-control" id="enabled" name="enabled">
+                <option></option>
+                <option value="true">Enabled</option>
+                <option value="false">Disable</option>
+              </select>
+            </div>
           </div>
-          <div class="p-3 m-3 text-center col-3">
-          </div>
-          <div class="text-center col-6">
-            <img id="my_image" class="p-3 m-3 text-center" style ="width:100%;" src="#" />
-          </div>
-          <div class="p-3 m-3 text-center col-3">
-          </div>
+          <div class="row m-3 p-3">
+            <div class="col-9">
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-2">
+              <button type="submit" id="btnAddUpdate" class="btn btn-primary form-control">Lưu</button>
+            </div>
           
-         </div>
+          </div>
+           
+        </form>
+        <div class = "border border-primary m-3 p-3"> 
+        <div class="p-3 mt-3 text-center">
+        <h5>Danh Sách Tài Khoản</h5>
+      </div>
+        <table id="example" class="display" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Email</th>
+                  <th>Name</th>
+                  <th>Password</th>
+                  <th>Phone</th>
+                  <th>Vai Trò</th>
+                  <th>Trạng Thái</th>
+                  <th></th>
+              </tr>
+          </thead>
+          
+      </table>
+        </div>
+        
+      
       </main>
           
       <!-- footer -->
@@ -144,6 +194,6 @@
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script type='text/javascript' src='<c:url value="/js/file.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/taikhoanadmin.js" />'></script>
 </body>
 </html>

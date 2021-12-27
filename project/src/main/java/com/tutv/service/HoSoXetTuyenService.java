@@ -114,4 +114,16 @@ public class HoSoXetTuyenService {
 		return hoSoXetTuyenDAO.getListHoSo();
 	}
 
+	/**
+	 * updateFile
+	 *
+	 * @param path
+	 */
+	public void updateFile(String path) {
+		HoSoXetTuyen hoSoXetTuyen = hoSoXetTuyenDAO.getHoSoXetTuyenById(getHoSo().getId());
+		hoSoXetTuyen.setLinkimg1(path);
+		hoSoXetTuyenDAO.updateHoSo(hoSoXetTuyen);
+		
+	}
+
 }

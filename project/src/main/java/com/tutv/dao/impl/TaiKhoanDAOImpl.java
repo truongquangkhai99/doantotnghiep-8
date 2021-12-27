@@ -220,4 +220,35 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 		return taiKhoanlist;
 	}
 
+	/**
+	 * updateTaiKhoan2
+	 *
+	 * @param taiKhoan
+	 * @return
+	 */
+	@Override
+	public TaiKhoan updateTaiKhoan2(TaiKhoan taiKhoan) {
+		Session session = null;
+		Transaction tx = null;
+		try {
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			session.update(taiKhoan);
+			tx.commit();
+			if (session != null) {
+				session.close();
+			}
+			return taiKhoan;
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+			if (session != null) {
+				session.close();
+			}
+			return null;
+		}
+	}
+
 }

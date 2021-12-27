@@ -31,4 +31,14 @@ public interface TaiKhoanDAO {
 	public boolean destroyTaiKhoan(TaiKhoan taikhoan);
 	
 	public List<TaiKhoanResponse> taikhoanList();
+
+	/**
+	 * updateTaiKhoan2
+	 *
+	 * @param taiKhoan
+	 * @return
+	 */
+	public TaiKhoan updateTaiKhoan2(TaiKhoan taiKhoan);
+
+
 }

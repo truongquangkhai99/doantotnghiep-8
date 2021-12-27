@@ -5,6 +5,8 @@
  */
 package com.tutv.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tutv.dto.KhoaDto;
 import com.tutv.dto.TaiKhoanDto;
+import com.tutv.entity.TaiKhoan;
+import com.tutv.response.EntityResponse;
 import com.tutv.response.TaiKhoanResponse;
 import com.tutv.service.SendMailAPI;
 import com.tutv.service.TaiKhoanService;
@@ -211,5 +216,53 @@ public class TaiKhoanAPIController {
 		SendMailAPI.sendMailTU(toAddr, subject, body);
 		return "oka";
 
+	}
+
+	
+	@RequestMapping(value = "taikhoan", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String showHoSo(@RequestBody KhoaDto taikhoanDto) throws Exception {
+		TaiKhoanResponse taikhoan = tkService.getTaiKhoan(taikhoanDto.getId());
+		return taikhoan.toJson();
+	}
+	
+	@RequestMapping(value = "taikhoans", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String listTaiKhoan() throws Exception {
+		List<TaiKhoanResponse> taikhoan = tkService.getListTaiKhoan();
+		return EntityResponse.toJson(taikhoan);
+	}
+	
+	@RequestMapping(value = "taikhoan", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String createTaiKhoan(@RequestBody TaiKhoanDto taikhoanDto) throws Exception {
+		
+		TaiKhoan kq = tkService.createTaiKhoan(taikhoanDto);
+		if (kq != null ) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
+	
+	@RequestMapping(value = "taikhoan", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String updateHoSo(@RequestBody TaiKhoanDto taikhoanDto) throws Exception {
+		
+		TaiKhoan kq = tkService.updateTaiKhoan2(taikhoanDto);
+		if (kq != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
+	
+	@RequestMapping(value = "taikhoan", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody TaiKhoanDto taikhoanDto) throws Exception {
+		TaiKhoan taikhoan = tkService.deleteTaiKhoan(taikhoanDto.getId());
+		if (taikhoan != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
 	}
 }

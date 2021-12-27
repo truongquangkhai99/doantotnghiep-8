@@ -42,6 +42,9 @@
                 <a class="nav-link" href="/admin/truongthpt">Quản Lý Trường Thpt</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/admin/taikhoan">Quản Lý Tài Khoản</a>
+              </li>
+              <li class="nav-item">
               		<c:if test="${not empty user.username}">
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
               		</c:if>

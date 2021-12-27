@@ -31,24 +31,23 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         if (data.id != null) {
+         
           for (const [key, value] of Object.entries(data)) {
-            $("input[name='" + key + "']").val(value);
-            //$("option[name='"+ key +"']").val(value);
-            $("select[name^=" + key + "] option[value=" + value + "]").attr(
-              "selected",
-              "selected"
-            );
+            try {
+              $("input[name='" + key + "']").val(value);
+              $("select[name^=" + key + "] option[value=" + value + "]").attr(
+                "selected",
+                "selected"
+              );
+            } catch (error) {
+              console.log(error);
+            }
           }
           $("input[name='ngaySinh']").val(
             new Date(data.ngaySinh + 3600 * 1000 * 24).toJSON().split("T")[0]
           );
           $(".form-control").prop("disabled", true);
         }
-
-        // for (const x in data) {
-        // 	text += data[x] + ", ";
-        // 	$("input[name='']").val("your value");
-        //   }
       },
     });
   }

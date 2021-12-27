@@ -31,18 +31,18 @@ public class UserController {
 	@Autowired
 	private TaiKhoanService utService;
 
-	/**
-	 * Controller show
-	 *
-	 * @param id
-	 * @return json
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "taikhoan", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String showTaiKhoan() throws Exception {
-		TaiKhoanResponse user = utService.getTaiKhoan("tvtu165@gmail.com");
-		return user.toJson();
-	}
+//	/**
+//	 * Controller show
+//	 *
+//	 * @param id
+//	 * @return json
+//	 * @throws Exception
+//	 */
+//	@RequestMapping(value = "taikhoana", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	public String showTaiKhoan() throws Exception {
+//		TaiKhoanResponse user = utService.getTaiKhoan("tvtu165@gmail.com");
+//		return user.toJson();
+//	}
 	@RequestMapping(value = "user", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String show() throws Exception {
 		UserResponse user = userService.getUser(1);

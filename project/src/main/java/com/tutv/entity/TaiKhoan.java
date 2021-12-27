@@ -31,7 +31,7 @@ public class TaiKhoan {
 	/**
 	 * Property email
 	 */
-	@Column(name = "email", nullable = false, length = 60)
+	@Column(name = "email", nullable = false, length = 60, unique = true)
 	private String email;
 	
 	/**
