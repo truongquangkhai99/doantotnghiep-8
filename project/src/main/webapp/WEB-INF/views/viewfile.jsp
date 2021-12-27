@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>File Kèm Theo</title>
+<title>Nguyện Vọng</title>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
 <link rel="stylesheet" href="<c:url value='/css/style.css' />" />
 </head>
 <body>
@@ -41,7 +42,7 @@
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
               		</c:if>
               		<c:if test="${empty user.username}">
-              		 <a class="nav-link" href="/login">Đăng Nhập</a>
+              		 <a class="nav-link" href="/user/hoso">Đăng Nhập</a>
               		</c:if>
                  
               </li>
@@ -55,7 +56,23 @@
       </div>
    <!-- main -->
       <main>
-         
+      <div class="p-3 mt-3 text-center">
+        <h3>File Đính Kèm</h3>
+      </div>
+        <form id ="formhoso" class = "border border-primary m-3 p-3">
+         <input name = "id" id = "id" type = "hidden"/>
+          <div class="row m-3 p-3">
+            <div class="col-3">
+              <label>File Upload</label>
+              <input type="file" class="form-control" name="diemtbMonMot" placeholder="Điểm Trung Bình Môn Học Thứ Nhất">
+            </div>
+          </div>
+          <div class="row m-3 p-3">
+          <div class="col-2">
+              <button type="submit" id="btnAddUpdate" class="btn btn-primary form-control">Lưu</button>
+            </div>
+          </div>
+        </form>
       </main>
           
       <!-- footer -->
@@ -108,5 +125,8 @@
 <script type='text/javascript' src='<c:url value="/js/jquery-3.5.1.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type='text/javascript' src='<c:url value="/js/nguyenvong.js" />'></script>
 </body>
 </html>

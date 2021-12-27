@@ -51,9 +51,23 @@ public class TruongThptService {
 	 * @param khoaDto
 	 * @return
 	 */
-	public TruongThpt saveTruongThpt(TruongThptDto khoaDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public TruongThpt saveTruongThpt(TruongThptDto truongThptDto) {
+		TruongThpt truongThpt = new TruongThpt();
+		if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV1")) {
+			truongThpt.setDiemUuTien("0.75");
+		} else if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV2")) {
+			truongThpt.setDiemUuTien("0.25");
+		} else if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV2-NT")) {
+			truongThpt.setDiemUuTien("0.5");
+		} else {
+			truongThpt.setDiemUuTien("0");
+		} 
+		
+		truongThpt.setMaTruong(truongThptDto.getMaTruong());
+		truongThpt.setTenTruong(truongThptDto.getTenTruong());
+		truongThpt.setKhuVucUuTien(truongThptDto.getKhuVucUuTien());
+		
+		return truongThptDAO.updateTruongThpt(truongThpt);
 	}
 
 	/**
@@ -62,9 +76,39 @@ public class TruongThptService {
 	 * @param khoaDto
 	 * @return
 	 */
-	public TruongThpt updateTruongThpt(TruongThptDto khoaDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public TruongThpt updateTruongThpt(TruongThptDto truongThptDto) {
+		TruongThpt truongThpt = truongThptDAO.findTruongThptById(truongThptDto.getId());
+		if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV1")) {
+			truongThpt.setDiemUuTien("0.75");
+		} else if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV2")) {
+			truongThpt.setDiemUuTien("0.25");
+		} else if (truongThptDto.getKhuVucUuTien().equalsIgnoreCase("KV2-NT")) {
+			truongThpt.setDiemUuTien("0.5");
+		} else {
+			truongThpt.setDiemUuTien("0");
+		} 
+		truongThpt.setMaTruong(truongThptDto.getMaTruong());
+		truongThpt.setTenTruong(truongThptDto.getTenTruong());
+		truongThpt.setKhuVucUuTien(truongThptDto.getKhuVucUuTien());
+		
+		return truongThptDAO.updateTruongThpt(truongThpt);
+		
+	}
+
+	/**
+	 * deleteTruongThpt
+	 *
+	 * @param id
+	 * @return
+	 */
+	public TruongThpt deleteTruongThpt(Integer id) {
+		TruongThpt truongThpt = truongThptDAO.findTruongThptById(id);
+		if (truongThptDAO.destroyTruongThpt(truongThpt)) {
+			return truongThpt;
+		} else {
+			return null;
+		}
+		
 	}
 
 }

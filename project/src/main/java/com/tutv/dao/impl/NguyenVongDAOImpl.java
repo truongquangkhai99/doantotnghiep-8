@@ -21,6 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.NguyenVongDAO;
 import com.tutv.entity.NguyenVong;
+import com.tutv.response.ChilNganh;
+import com.tutv.response.ChilToHopMon;
+import com.tutv.response.CommonResponse;
+import com.tutv.response.NguyenVongResponse;
 import com.tutv.response.NguyenVongResponse;
 import com.tutv.service.HoSoXetTuyenService;
 
@@ -179,15 +183,41 @@ public class NguyenVongDAOImpl implements NguyenVongDAO{
 	 * @return
 	 */
 	@Override
-	public List<NguyenVongResponse> getListNguyenVong() {
-		Session session = this.sessionFactory.getCurrentSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<NguyenVongResponse> query = builder.createQuery(NguyenVongResponse.class);
-		Root<NguyenVongResponse> root = query.from(NguyenVongResponse.class);
-//		Predicate p = builder.equal(root.get("idHoSoXetTuyen"), hoSoXetTuyenService.getHoSo().getId());
+	public List<NguyenVongResponse> getListNguyenVong(Integer idHoSo) {
+		
+//		Session session = this.sessionFactory.getCurrentSession();
+//		CriteriaBuilder builder = session.getCriteriaBuilder();
+//		CriteriaQuery<NguyenVongResponse> query = builder.createQuery(NguyenVongResponse.class);
+//		Root<NguyenVongResponse> root = query.from(NguyenVongResponse.class);
+//		Predicate p = builder.equal(root.get("idHoSoXetTuyen"),idHoSo );
 //		query.select(root).where(p);
-		query.select(root);
-		List<NguyenVongResponse> nguyenVonglist = session.createQuery(query).getResultList();
-		return nguyenVonglist;
+//		query.select(root);
+//		List<NguyenVongResponse> nguyenVonglist;
+//		try {
+//			nguyenVonglist = session.createQuery(query).getResultList();
+//		} catch (Exception e) {
+//			@SuppressWarnings("unchecked")
+//			List<NguyenVongResponse> nguyenVonglist1  = (List<NguyenVongResponse>) session.createQuery(query).getSingleResult();
+//			return nguyenVonglist1;
+//		}
+//		return nguyenVonglist;
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		List<NguyenVongResponse> historys = session.createNativeQuery("SELECT `nguyen_vong`.* " + "FROM `nguyen_vong`  WHERE `nguyen_vong`.`id_ho_so_xet_tuyen` = '" + idHoSo + "'", NguyenVongResponse.class).getResultList();
+		for (NguyenVongResponse history : historys) {
+			CommonResponse childrenResponse = session.createNativeQuery(
+			    "SELECT `to_hop_mon`.`id` ,`to_hop_mon`.`ma_to_hop_mon`  \r\n" + "FROM `to_hop_mon`\r\n"
+			        + " WHERE `to_hop_mon`.`id` = '" + history.getIdToHopMon() + "' ORDER BY `to_hop_mon`.`id` ASC",
+			        CommonResponse.class).getSingleResult();
+			history.setIdToHopMonObj(childrenResponse);
+			
+			ChilToHopMon childrenResponse2 = session.createNativeQuery(
+			    "SELECT `nganh`.`id` ,`nganh`.`ten_nganh`  \r\n" + "FROM `nganh`, `to_hop_mon`"
+			        + " WHERE `to_hop_mon`.`id_nganh` = `nganh`.`id` AND `to_hop_mon`.`id` = '" + childrenResponse.getId() + "'",
+			        ChilToHopMon.class).getSingleResult();
+			history.setIdNganhObj(childrenResponse2);
+		}
+		
+		return historys;
 	}
 }

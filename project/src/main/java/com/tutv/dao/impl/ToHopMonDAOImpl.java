@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.ToHopMonDAO;
 import com.tutv.entity.ToHopMon;
+import com.tutv.response.ChilToHopMon;
 import com.tutv.response.ToHopMonResponse;
 
 /**
@@ -176,14 +177,25 @@ public class ToHopMonDAOImpl implements ToHopMonDAO{
 	 */
 	@Override
 	public List<ToHopMonResponse> getListToHopMon() {
+//		Session session = this.sessionFactory.getCurrentSession();
+//		CriteriaBuilder builder = session.getCriteriaBuilder();
+//		CriteriaQuery<ToHopMonResponse> query = builder.createQuery(ToHopMonResponse.class);
+//		Root<ToHopMonResponse> root = query.from(ToHopMonResponse.class);
+//		//Predicate p = builder.equal(root.get("id"), id);
+//		query.select(root);
+//		List<ToHopMonResponse> khoalist = session.createQuery(query).getResultList();
+//		return khoalist;
+		
 		Session session = this.sessionFactory.getCurrentSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<ToHopMonResponse> query = builder.createQuery(ToHopMonResponse.class);
-		Root<ToHopMonResponse> root = query.from(ToHopMonResponse.class);
-		//Predicate p = builder.equal(root.get("id"), id);
-		query.select(root);
-		List<ToHopMonResponse> khoalist = session.createQuery(query).getResultList();
-		return khoalist;
+		List<ToHopMonResponse> historys = session.createNativeQuery("SELECT `to_hop_mon`.* \r\n" + "FROM `to_hop_mon`\r\n", ToHopMonResponse.class).getResultList();
+		for (ToHopMonResponse history : historys) {
+			ChilToHopMon childrenResponse = session.createNativeQuery(
+			    "SELECT `nganh`.`id` ,`nganh`.`ten_nganh`  \r\n" + "FROM `nganh`\r\n"
+			        + " WHERE `nganh`.`id` = '" + history.getIdNganh() + "' ORDER BY `nganh`.`id` ASC",
+			        ChilToHopMon.class).getSingleResult();
+			history.setIdNganhObj(childrenResponse);
+		}
+		return historys;
 	}
 	/**
 	 * getListToHopMonByNganh

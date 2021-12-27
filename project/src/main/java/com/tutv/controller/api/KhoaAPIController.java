@@ -65,4 +65,15 @@ public class KhoaAPIController {
 			return "{\"kq\":\"error\"}";
 		}
 	}
+	
+	@RequestMapping(value = "khoa", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody KhoaDto khoaDto) throws Exception {
+		Khoa khoa = khoaService.deleteKhoa(khoaDto.getId());
+		if (khoa != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
 }

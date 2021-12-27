@@ -72,4 +72,15 @@ public class NganhAPIController {
 			return "{\"kq\":\"error\"}";
 		}
 	}
+	
+	@RequestMapping(value = "nganh", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody NganhDto nguyenVongDto) throws Exception {
+		Nganh khoa = nganhService.deleteNganh(nguyenVongDto.getId());
+		if (khoa != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
 }

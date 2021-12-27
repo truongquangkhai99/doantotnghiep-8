@@ -1,48 +1,19 @@
+var dataTable = [];
 //load Nganh
 $.ajax({
-    url: "/nganhs",
+    url: "/khoas",
     type: "GET",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
         for (const x in data) {
-            $("#idnganh").append(new Option(data[x].tenNganh, data[x].id));
+            $("#idKhoa").append(new Option(data[x].tenKhoa, data[x].id));
         }
     },
 });
-
-//let data1 = { "idNganh": 1 };
-$.ajax({
-    //url: "/tohopmonnganh",
-    url: "/tohopmons",
-    type: "GET",
-    //data: JSON.stringify(data1),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-        for (const x in data) {
-            $("#idToHopMon").append(new Option(data[x].maToHopMon, data[x].id));
-        }
-    },
-});
-var dataTable = [];
 $(document).ready(function () {
-    function getmaToHopMon(idToHopMon) {
-        var data = { "id": idToHopMon };
-        $.ajax({
-            url: "/tohopmon",
-            type: "GET",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                return data.maToHopMon;
-            },
-        });
-    }
-
     $.ajax({
-        url: "/nguyenvongs",
+        url: "/nganhs",
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -52,13 +23,10 @@ $(document).ready(function () {
                 data: dataTable,
                 columns: [
                     { "data": "id" },
-                    { "data": "idNganhObj.id" },
-                    { "data": "idNganhObj.tenNganh" },
-                    { "data": "idToHopMon" },
-                    { "data": "idToHopMonObj.maToHopMon" },
-                    { "data": "diemtbMonMot" },
-                    { "data": "diemtbMonHai" },
-                    { "data": "diemtbMonBa" },
+                    { "data": "idKhoa" },
+                    { "data": "idKhoaObj.tenKhoa" },
+                    { "data": "maNganh" },
+                    { "data": "tenNganh" },
                     {
                         "data": null,
                         "defaultContent": "<button>Xóa</button>"
@@ -73,23 +41,20 @@ $(document).ready(function () {
         console.log(data);
         for (const [key, value] of Object.entries(data)) {
             $("input[name='" + key + "']").val(value);
-            if(key=="idToHopMon"){
-                $("select[name^=" + key + "] option[value=" + value + "]").attr("selected", "selected");
+            if (key == "idKhoa") {
+                $("select[name^='" + key + "'] option[value='"+ value +"']").prop('selected', true);
             }
-            if(key=="idNganhObj"){
-                $("#idnganh option[value=" + value.id + "]").attr("selected", "selected");
-            }
-            
+           
         }
         $("#btnAddUpdate").html('Cập Nhập');
     });
 
     $('#example').on('click', 'tbody button', function () {
         var data = $('#example').DataTable().row($(this).parents('tr')).data();
-        if (confirm('Bạn Có Muốn Xóa Nguyện Vọng Có Id là : ' + data.id)) {
+        if (confirm('Bạn Có Muốn Xóa Nganh Có Id là : ' + data.id)) {
             var data = { "id": data.id };
             $.ajax({
-                url: "/nguyenvong",
+                url: "/nganh",
                 type: "DELETE",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
@@ -111,23 +76,6 @@ $(document).ready(function () {
         // alert(data.id);
     });
 
-    $('#idnganh').on('change', function () {
-        $("#idToHopMon option").remove();
-        var data = { "idNganh": this.value };
-        $.ajax({
-            url: "/tohopmonnganh",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                for (const x in data) {
-                    $("#idToHopMon").append(new Option(data[x].maToHopMon, data[x].id));
-                }
-            },
-        });
-    });
-
     $("#formhoso").extend(jQuery.validator.messages, {
         required: "Trường Không được bỏ trống. Vui lòng Điền Chính Xác Giá Trị",
     });
@@ -141,41 +89,22 @@ $(document).ready(function () {
             onkeyup: false,
             onclick: false,
             rules: {
-                diemtbMonMot: {
+                tenNganh: {
                     required: true,
-                    min: 0,
-                    max: 10,
+                    maxlength : 60
                 },
-                diemtbMonHai: {
+                maNganh: {
                     required: true,
-                    min: 0,
-                    max: 10,
+                    maxlength : 60
                 },
-                diemtbMonBa: {
-                    required: true,
-                    min: 0,
-                    max: 10,
-                },
-                idToHopMon: {
-                    required: true,
-                }
 
             },
             messages: {
-                diemtbMonMot: {
-                    required: "Bắt buộc nhập điểm",
-                    min: "Điểm nhập trong khoảng từ 0 - 10đ",
-                    max: "Điểm nhập trong khoảng từ 0 - 10đ",
+                tenNganh: {
+                    maxlength: "Nhập tối đa 60 ký tự",
                 },
-                diemtbMonHai: {
-                    required: "Bắt buộc nhập điểm",
-                    min: "Điểm nhập trong khoảng từ 0 - 10đ",
-                    max: "Điểm nhập trong khoảng từ 0 - 10đ",
-                },
-                diemtbMonBa: {
-                    required: "Bắt buộc nhập điểm",
-                    min: "Điểm nhập trong khoảng từ 0 - 10đ",
-                    max: "Điểm nhập trong khoảng từ 0 - 10đ",
+                maNganh: {
+                    maxlength: "Nhập tối đa 60 ký tự",
                 },
             },
             submitHandler: function (form) {
@@ -187,7 +116,7 @@ $(document).ready(function () {
 
                 if (data.id == "") {
                     $.ajax({
-                        url: "/nguyenvong",
+                        url: "/nganh",
                         type: "POST",
                         data: JSON.stringify(data),
                         contentType: "application/json; charset=utf-8",
@@ -208,7 +137,7 @@ $(document).ready(function () {
 
                 } else {
                     $.ajax({
-                        url: "/nguyenvong",
+                        url: "/nganh",
                         type: "PUT",
                         data: JSON.stringify(data),
                         contentType: "application/json; charset=utf-8",

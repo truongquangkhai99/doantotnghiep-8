@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.NganhDAO;
 import com.tutv.entity.Nganh;
+import com.tutv.response.ChilNganh;
 import com.tutv.response.NganhResponse;
 
 /**
@@ -176,14 +177,25 @@ public class NganhDAOImpl implements NganhDAO{
 	 */
 	@Override
 	public List<NganhResponse> getListNganh() {
+//		Session session = this.sessionFactory.getCurrentSession();
+//		CriteriaBuilder builder = session.getCriteriaBuilder();
+//		CriteriaQuery<NganhResponse> query = builder.createQuery(NganhResponse.class);
+//		Root<NganhResponse> root = query.from(NganhResponse.class);
+//		//Predicate p = builder.equal(root.get("id"), id);
+//		query.select(root);
+//		List<NganhResponse> khoalist = session.createQuery(query).getResultList();
+//		return khoalist;
+		
 		Session session = this.sessionFactory.getCurrentSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<NganhResponse> query = builder.createQuery(NganhResponse.class);
-		Root<NganhResponse> root = query.from(NganhResponse.class);
-		//Predicate p = builder.equal(root.get("id"), id);
-		query.select(root);
-		List<NganhResponse> khoalist = session.createQuery(query).getResultList();
-		return khoalist;
+		List<NganhResponse> historys = session.createNativeQuery("SELECT `nganh`.* \r\n" + "FROM `nganh`\r\n", NganhResponse.class).getResultList();
+		for (NganhResponse history : historys) {
+			ChilNganh childrenResponse = session.createNativeQuery(
+			    "SELECT `khoa`.`id` ,`khoa`.`ten_khoa`  \r\n" + "FROM `khoa`\r\n"
+			        + " WHERE `khoa`.`id` = '" + history.getIdKhoa() + "' ORDER BY `khoa`.`id` ASC",
+			        ChilNganh.class).getSingleResult();
+			history.setIdKhoaObj(childrenResponse);
+		}
+		return historys;
 	}
 	/**
 	 * getListNganhByKhoa

@@ -41,7 +41,7 @@
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
               		</c:if>
               		<c:if test="${empty user.username}">
-              		 <a class="nav-link" href="/login">Đăng Nhập</a>
+              		 <a class="nav-link" href="/user/hoso">Đăng Nhập</a>
               		</c:if>
                  
               </li>
@@ -157,8 +157,22 @@
       </div>
     </div>
 </div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/61c98d3080b2296cfdd3ee30/1fntkv1o2';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 <script type='text/javascript' src='<c:url value="/js/jquery-3.5.1.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
+
 </body>
 </html>

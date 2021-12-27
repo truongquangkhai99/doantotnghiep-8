@@ -35,7 +35,7 @@ public class Nganh {
 	/**
 	 * Property maNganh
 	 */
-	@Column(name = "ma_nganh", nullable = false, length = 60)
+	@Column(name = "ma_nganh", nullable = false, length = 60, unique = true)
 	private String maNganh;
 	
 	/**

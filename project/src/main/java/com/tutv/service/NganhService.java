@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tutv.dao.KhoaDAO;
 import com.tutv.dao.NganhDAO;
 import com.tutv.dto.NganhDto;
 import com.tutv.entity.Nganh;
@@ -23,6 +24,8 @@ public class NganhService {
 	
 	@Autowired 
 	NganhDAO toHopMonDAO;
+	
+	@Autowired KhoaDAO khoaDAO;
 
 	/**
 	 * getNganh
@@ -45,14 +48,12 @@ public class NganhService {
 	 * @param hoSoXetTuyenDto
 	 * @return
 	 */
-	public Nganh saveNganh(NganhDto nguyenVongDto) {
-		Nganh nguyenVong = new Nganh();
-
-//		nguyenVong.setMaNganh(nguyenVongDto.getMaNganh());
-//		nguyenVong.setMoTa(nguyenVongDto.getMoTa());
-//		nguyenVong.setTenNganh(nguyenVongDto.getTenNganh());
-		// TODO Auto-generated method stub
-		return toHopMonDAO.createNganh(nguyenVong);
+	public Nganh saveNganh(NganhDto nganhDto) {
+		Nganh nganh = new Nganh();
+		nganh.setIdKhoa(khoaDAO.findKhoaById(nganhDto.getIdKhoa()));
+		nganh.setMaNganh(nganhDto.getMaNganh());
+		nganh.setTenNganh(nganhDto.getTenNganh());
+		return toHopMonDAO.createNganh(nganh);
 	}
 
 	/**
@@ -61,13 +62,12 @@ public class NganhService {
 	 * @param hoSoXetTuyenDto
 	 * @return
 	 */
-	public Nganh updateNganh(NganhDto nguyenVongDto) {
-		Nganh nguyenVong = toHopMonDAO.findNganhById(nguyenVongDto.getId());
-//		nguyenVong.setId(nguyenVongDto.getId());
-//		nguyenVong.setMaNganh(nguyenVongDto.getMaNganh());
-//		nguyenVong.setMoTa(nguyenVongDto.getMoTa());
-//		nguyenVong.setTenNganh(nguyenVongDto.getTenNganh());
-		return toHopMonDAO.updateNganh(nguyenVong);
+	public Nganh updateNganh(NganhDto nganhDto) {
+		Nganh nganh = toHopMonDAO.findNganhById(nganhDto.getId());
+		nganh.setIdKhoa(khoaDAO.findKhoaById(nganhDto.getIdKhoa()));
+		nganh.setMaNganh(nganhDto.getMaNganh());
+		nganh.setTenNganh(nganhDto.getTenNganh());
+		return toHopMonDAO.updateNganh(nganh);
 	}
 
 	/**
@@ -79,5 +79,21 @@ public class NganhService {
 	public List<NganhResponse> getListNganhByKhoa(Integer idKhoa) {
 		// TODO Auto-generated method stub
 		return toHopMonDAO.getListNganhByKhoa(idKhoa);
+	}
+
+	/**
+	 * deleteNganh
+	 *
+	 * @param id
+	 * @return
+	 */
+	public Nganh deleteNganh(Integer id) {
+		Nganh nganh = toHopMonDAO.findNganhById(id);
+		if (toHopMonDAO.destroyNganh(nganh)) {
+			return nganh;
+		} else {
+			return null;
+		}
+		
 	}
 }

@@ -18,15 +18,6 @@ public class CommonResponse extends EntityResponse {
 	@Id
 	@Column(name = "id", nullable = false, columnDefinition = "SMALLINT UNSIGNED")
 	private Integer id;
-
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "ma_khoa")
-	private String maKhoa;
-	
-	@Column(name = "ten_truong")
-	private String tenTruong;
 	
 	@Column(name = "ma_to_hop_mon")
 	private String maToHopMon;
@@ -36,6 +27,13 @@ public class CommonResponse extends EntityResponse {
 	 */
 	public CommonResponse() {
 	}
+	/**
+	 * Constructor
+	 */
+	public CommonResponse(Integer id, String maToHopMon) {
+		this.id = id;
+		this.maToHopMon = maToHopMon;
+	}
 
 	public Integer getId() {
 		return id;
@@ -43,30 +41,6 @@ public class CommonResponse extends EntityResponse {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMaKhoa() {
-		return maKhoa;
-	}
-
-	public void setMaKhoa(String maKhoa) {
-		this.maKhoa = maKhoa;
-	}
-
-	public String getTenTruong() {
-		return tenTruong;
-	}
-
-	public void setTenTruong(String tenTruong) {
-		this.tenTruong = tenTruong;
 	}
 
 	public String getMaToHopMon() {

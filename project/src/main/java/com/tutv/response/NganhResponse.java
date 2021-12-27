@@ -28,13 +28,13 @@ public class NganhResponse extends EntityResponse{
 	/**
 	 * Property maNganh
 	 */
-	@Column(name = "ma_nganh", nullable = false, length = 60)
+	@Column(name = "ma_nganh", nullable = false, length = 60, unique = true)
 	private String maNganh;
 	
 	/**
 	 * Property tenNganh
 	 */
-	@Column(name = "ten_nganh", nullable = false, length = 60)
+	@Column(name = "ten_nganh", nullable = false, length = 60, unique = true)
 	private String tenNganh;
 	
 	/**
@@ -53,7 +53,7 @@ public class NganhResponse extends EntityResponse{
 	 * Property idKhoaObj
 	 */
 	@Transient
-	private CommonResponse idKhoaObj;
+	private ChilNganh idKhoaObj;
 	
 	/**
 	 * Constructor
@@ -102,11 +102,11 @@ public class NganhResponse extends EntityResponse{
 		this.idKhoa = idKhoa;
 	}
 
-	public CommonResponse getIdKhoaObj() {
+	public ChilNganh getIdKhoaObj() {
 		return idKhoaObj;
 	}
 
-	public void setIdKhoaObj(CommonResponse idKhoaObj) {
+	public void setIdKhoaObj(ChilNganh idKhoaObj) {
 		this.idKhoaObj = idKhoaObj;
 	}
 	

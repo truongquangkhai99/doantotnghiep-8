@@ -42,13 +42,13 @@ public class ToHopMonResponse extends EntityResponse{
 	 * Property idNganhObj
 	 */
 	@Transient
-	private CommonResponse idNganhObj;
+	private ChilToHopMon idNganhObj;
 	
-	public CommonResponse getIdNganhObj() {
+	public ChilToHopMon getIdNganhObj() {
 		return idNganhObj;
 	}
 
-	public void setIdNganhObj(CommonResponse idNganhObj) {
+	public void setIdNganhObj(ChilToHopMon idNganhObj) {
 		this.idNganhObj = idNganhObj;
 	}
 

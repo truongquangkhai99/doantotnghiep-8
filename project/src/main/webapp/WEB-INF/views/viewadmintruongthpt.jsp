@@ -21,22 +21,28 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="/user/hoso">Home</a>
+                <a class="nav-link active" href="/admin/khoa">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/user/hoso">Thông tin Hồ Sơ</a>
+                <a class="nav-link" href="/admin/khoa">Quản Lý Khoa</a>
               </li>
               
               <li class="nav-item">
-                  <a class="nav-link" href="/user/nguyenvong">Danh Sách Nguyện Vọng</a>
+                <a class="nav-link" href="/admin/nganh">Quản Lý Ngành</a>
               </li>
+              
               <li class="nav-item">
-                  <a class="nav-link" href="/user/file">File Hồ Sơ Kèm Theo</a>
+                <a class="nav-link" href="/admin/tohopmon">Quản Lý Tổ Hợp Môn</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/truongthpt">Quản Lý Trường Thpt</a>
+              </li>
+              
               <li class="nav-item">
               		<c:if test="${not empty user.username}">
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
@@ -57,38 +63,31 @@
    <!-- main -->
       <main>
       <div class="p-3 mt-3 text-center">
-        <h3>Danh Sách Nguyện Vọng Đăng Ký</h3>
+        <h3>Quản Lý Trường THPT</h3>
       </div>
         <form id ="formhoso" class = "border border-primary m-3 p-3">
          <input name = "id" id = "id" type = "hidden"/>
           <div class="row m-3 p-3">
             <div class="col-3">
-              <label>Ngành</label>
-              <select class="form-control" id="idnganh">
-                <option></option>
-              </select>
+              <label>Mã Trường</label>
+              <input type="text" class="form-control" name="maTruong" placeholder="Mã Tổ Hợp">
             </div>
             <div class="col-3">
-              <label>Tổ Hợp Môn</label>
-              <select class="form-control" id="idToHopMon" name="idToHopMon">
+              <label>Tên Trường</label>
+              <input type="text" class="form-control" name="tenTruong" placeholder="Mã Tổ Hợp">
+            </div>
+            <div class="col-3">
+              <label>Khu Vực Ưu Tiên</label>
+              <select class="form-control" id="khuVucUuTien" name="khuVucUuTien">
                 <option></option>
+                <option value="KV1">KV1</option>
+                <option value="KV2">KV2</option>
+                <option value="KV2-NT">KV2-NT</option>
+                <option value="KV3">KV3</option>
               </select>
             </div>
           </div>
-          <div class="row m-3 p-3">
-            <div class="col-3">
-              <label>Điểm Trung Bình Môn Học Thứ Nhất</label>
-              <input type="number" class="form-control" name="diemtbMonMot" placeholder="Điểm Trung Bình Môn Học Thứ Nhất">
-            </div>
-            <div class="col-3">
-              <label>Điểm Trung Bình Môn Học Thứ Hai</label>
-              <input type="number" class="form-control" name="diemtbMonHai" placeholder="Điểm Trung Bình Môn Học Thứ Hai">
-            </div>            
-            <div class="col-3">
-              <label>Điểm Trung Bình Môn Học Thứ Ba</label>
-              <input type="number" class="form-control" name="diemtbMonBa" placeholder="Điểm Trung Bình Môn Học Thứ Ba">
-            </div>
-          </div>
+
           <div class="row m-3 p-3">
             <div class="col-9">
             </div>
@@ -103,20 +102,17 @@
         </form>
         <div class = "border border-primary m-3 p-3"> 
         <div class="p-3 mt-3 text-center">
-        <h5>Danh Sách Nguyện Vọng</h5>
+        <h5>Danh Sách Trường THPT</h5>
       </div>
         <table id="example" class="display" style="width:100%">
           <thead>
               <tr>
                   <th>Id</th>
-                  <th>Id Ngành</th>
-                  <th>Tên Ngành</th>
-                  <th>Id Tổ Hợp Môn</th>
-                  <th>Mã Tổ hợp môn</th>
-                  <th>Điểm trung bình môn thứ 1</th>
-                  <th>Điểm trung bình môn thứ 2</th>
-                  <th>Điểm trung bình môn thứ 3</th>
-                  <th></th>
+                  <th>Mã Trường</th>
+                  <th>Tên Trường</th>
+                  <th>Khu Vực Ưu Tiên</th>
+                  <th>Điểm Ưu Tiên</th>
+                  <th></th>>
               </tr>
           </thead>
           
@@ -178,6 +174,6 @@
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script type='text/javascript' src='<c:url value="/js/nguyenvong.js" />'></script>
+<script type='text/javascript' src='<c:url value="/js/truongthptadmin.js" />'></script>
 </body>
 </html>

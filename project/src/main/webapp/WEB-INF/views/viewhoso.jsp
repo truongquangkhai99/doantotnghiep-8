@@ -41,7 +41,7 @@
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
               		</c:if>
               		<c:if test="${empty user.username}">
-              		 <a class="nav-link" href="/login">Đăng Nhập</a>
+              		 <a class="nav-link" href="/user/hoso">Đăng Nhập</a>
               		</c:if>
                  
               </li>
@@ -55,6 +55,10 @@
       </div>
    <!-- main -->
       <main>
+      
+      <div class="p-3 mt-3 text-center">
+        <h3>Thông Tin Hồ Sơ Đăng Ký</h3>
+      </div>
         <form id ="formhoso" class = "border border-primary m-3 p-3">
          <input name = "id" id = "id" type = "hidden"/>
           <div class="row m-3 p-3">
@@ -73,7 +77,7 @@
               <input type="date" class="form-control" name="ngaySinh" placeholder="Ngày Sinh">
             </div>
             <div class="col-3">
-              <label">Giới tính</label>
+              <label>Giới tính</label>
               <select class="form-control" id="gioiTinh" name="gioiTinh">
                 <option></option>
                 <option value="nam">Nam</option>

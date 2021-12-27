@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tutv.dto.ToHopMonDto;
 import com.tutv.dto.TruongThptDto;
+import com.tutv.entity.ToHopMon;
 import com.tutv.entity.TruongThpt;
 import com.tutv.response.EntityResponse;
 import com.tutv.response.KhoaResponse;
@@ -61,6 +64,17 @@ public class TruongThptAPIController {
 		
 		TruongThpt kq = truongThptService.updateTruongThpt(khoaDto);
 		if (kq != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
+	
+	@RequestMapping(value = "truongthpt", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody TruongThptDto nguyenVongDto) throws Exception {
+		TruongThpt khoa = truongThptService.deleteTruongThpt(nguyenVongDto.getId());
+		if (khoa != null) {
 			return "{\"kq\":\"ok\"}";
 		}
 		else {

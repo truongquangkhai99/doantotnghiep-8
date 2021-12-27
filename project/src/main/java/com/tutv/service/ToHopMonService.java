@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tutv.dao.NganhDAO;
 import com.tutv.dao.ToHopMonDAO;
 import com.tutv.dto.ToHopMonDto;
 import com.tutv.entity.ToHopMon;
@@ -23,6 +24,8 @@ public class ToHopMonService {
 
 	@Autowired 
 	ToHopMonDAO toHopMonDAO;
+	
+	@Autowired NganhDAO nganhDAO;
 
 	/**
 	 * getToHopMon
@@ -45,14 +48,11 @@ public class ToHopMonService {
 	 * @param hoSoXetTuyenDto
 	 * @return
 	 */
-	public ToHopMon saveToHopMon(ToHopMonDto nguyenVongDto) {
-		ToHopMon nguyenVong = new ToHopMon();
-
-//		nguyenVong.setMaToHopMon(nguyenVongDto.getMaToHopMon());
-//		nguyenVong.setMoTa(nguyenVongDto.getMoTa());
-//		nguyenVong.setTenToHopMon(nguyenVongDto.getTenToHopMon());
-		// TODO Auto-generated method stub
-		return toHopMonDAO.createToHopMon(nguyenVong);
+	public ToHopMon saveToHopMon(ToHopMonDto toHopMonDto) {
+		ToHopMon toHopMon = new ToHopMon();
+		toHopMon.setIdNganh(nganhDAO.findNganhById(toHopMonDto.getIdNganh()));
+		toHopMon.setMaToHopMon(toHopMonDto.getMaToHopMon());
+		return toHopMonDAO.createToHopMon(toHopMon);
 	}
 
 	/**
@@ -61,13 +61,11 @@ public class ToHopMonService {
 	 * @param hoSoXetTuyenDto
 	 * @return
 	 */
-	public ToHopMon updateToHopMon(ToHopMonDto nguyenVongDto) {
-		ToHopMon nguyenVong = toHopMonDAO.findToHopMonById(nguyenVongDto.getId());
-//		nguyenVong.setId(nguyenVongDto.getId());
-//		nguyenVong.setMaToHopMon(nguyenVongDto.getMaToHopMon());
-//		nguyenVong.setMoTa(nguyenVongDto.getMoTa());
-//		nguyenVong.setTenToHopMon(nguyenVongDto.getTenToHopMon());
-		return toHopMonDAO.updateToHopMon(nguyenVong);
+	public ToHopMon updateToHopMon(ToHopMonDto toHopMonDto) {
+		ToHopMon toHopMon = toHopMonDAO.findToHopMonById(toHopMonDto.getId());
+		toHopMon.setIdNganh(nganhDAO.findNganhById(toHopMonDto.getIdNganh()));
+		toHopMon.setMaToHopMon(toHopMonDto.getMaToHopMon());
+		return toHopMonDAO.updateToHopMon(toHopMon);
 	}
 
 	/**
@@ -79,6 +77,22 @@ public class ToHopMonService {
 	public List<ToHopMonResponse> getListToHopMonByNganh(Integer idNganh) {
 		// TODO Auto-generated method stub
 		return toHopMonDAO.getListToHopMonByNganh(idNganh);
+	}
+
+	/**
+	 * deleteToHopMon
+	 *
+	 * @param id
+	 * @return
+	 */
+	public ToHopMon deleteToHopMon(Integer id) {
+		ToHopMon toHopMon = toHopMonDAO.findToHopMonById(id);
+		if (toHopMonDAO.destroyToHopMon(toHopMon)) {
+			return toHopMon;
+		} else {
+			return null;
+		}
+		
 	}
 }
 

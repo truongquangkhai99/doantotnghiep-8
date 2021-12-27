@@ -72,4 +72,15 @@ public class ToHopMonAPIController {
 			return "{\"kq\":\"error\"}";
 		}
 	}
+	
+	@RequestMapping(value = "tohopmon", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody ToHopMonDto nguyenVongDto) throws Exception {
+		ToHopMon khoa = toHopMonService.deleteToHopMon(nguyenVongDto.getId());
+		if (khoa != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
 }

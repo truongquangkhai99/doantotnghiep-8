@@ -40,6 +40,11 @@
 				<value>com.tutv.response.HoSoXetTuyenResponse</value>
 				<value>com.tutv.response.ToHopMonResponse</value>
 				<value>com.tutv.response.NguyenVongResponse</value>
+				<value>com.tutv.response.ChilNganh</value>
+				<value>com.tutv.response.CommonResponse</value>
+				<value>com.tutv.response.ChilToHopMon</value>
+				
+				
 
 			</list>
 		</property>

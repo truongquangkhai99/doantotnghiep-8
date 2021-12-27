@@ -71,4 +71,20 @@ public class KhoaService {
 		return khoaDAO.updateKhoa(khoa);
 	}
 
+	/**
+	 * deleteKhoa
+	 *
+	 * @param id
+	 * @return
+	 */
+	public Khoa deleteKhoa(Integer id) {
+		Khoa khoa = khoaDAO.findKhoaById(id);
+		if (khoaDAO.destroyKhoa(khoa)) {
+			return khoa;
+		} else {
+			return null;
+		}
+		
+	}
+
 }

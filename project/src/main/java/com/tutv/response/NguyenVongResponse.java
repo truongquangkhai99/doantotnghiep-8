@@ -50,6 +50,12 @@ public class NguyenVongResponse extends EntityResponse{
 	private CommonResponse idToHopMonObj;
 	
 	/**
+	 * Property idToHopMonObj
+	 */
+	@Transient
+	private ChilToHopMon idNganhObj;
+	
+	/**
 	 * Property diemtb_mon_mot
 	 */
 	@Column(name = "diemtb_mon_mot", nullable = false)
@@ -69,6 +75,14 @@ public class NguyenVongResponse extends EntityResponse{
 	
 	public NguyenVongResponse() {
 		
+	}
+
+	public ChilToHopMon getIdNganhObj() {
+		return idNganhObj;
+	}
+
+	public void setIdNganhObj(ChilToHopMon idNganhObj) {
+		this.idNganhObj = idNganhObj;
 	}
 
 	public Integer getId() {

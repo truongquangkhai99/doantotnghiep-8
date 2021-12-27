@@ -22,7 +22,7 @@ public interface NguyenVongDAO {
 
 	public NguyenVongResponse getNguyenVongById(Integer id);
 
-	public List<NguyenVongResponse> getListNguyenVong();
+	public List<NguyenVongResponse> getListNguyenVong(Integer idHoSo);
 
 	public NguyenVong createNguyenVong(NguyenVong nguyenVong);
 

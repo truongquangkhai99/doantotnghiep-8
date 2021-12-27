@@ -1,3 +1,5 @@
+ALTER TABLE `to_hop_mon` ADD UNIQUE `unique_index`(`id_nganh`, `ma_to_hop_mon`);
+
 INSERT INTO `tai_khoan` (`id`, `email`, `enabled`, `name`, `password`, `phone`, `role`) VALUES(1, 'trinhtu16051999@gmail.com', b'1', 'trinhtu', '123456', NULL, 'ROLE_ADMIN');
 INSERT INTO `tai_khoan` (`id`, `email`, `enabled`, `name`, `password`, `phone`, `role`) VALUES(2, 'tvtu165@gmail.com', b'1', 'tu', '123456', NULL, 'ROLE_USER');
 
@@ -30,8 +32,8 @@ INSERT INTO `to_hop_mon` (`id`, `ma_to_hop_mon`, `id_nganh`) VALUES(10, 'A', 2);
 INSERT INTO `to_hop_mon` (`id`, `ma_to_hop_mon`, `id_nganh`) VALUES(11, 'A', 3);
 INSERT INTO `to_hop_mon` (`id`, `ma_to_hop_mon`, `id_nganh`) VALUES(12, 'D', 4);
 
-INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(1, 4, 2, 2, 1, 1);
-INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(2, 3, 3, 4, 1, 10);
-INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(3, 3, 3, 4, 1, 2);
+INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(1, 4, 2, 2, 2, 1);
+INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(2, 3, 3, 4, 2, 10);
+INSERT INTO `nguyen_vong` (`id`, `diemtb_mon_ba`, `diemtb_mon_hai`, `diemtb_mon_mot`, `id_ho_so_xet_tuyen`, `id_to_hop_mon`) VALUES(3, 3, 3, 4, 2, 2);
 
 INSERT INTO `users` (`id`, `avatar`, `created_at`, `email`, `email_verified_at`, `password`, `remember_token`, `reset_token`, `updated_at`) VALUES(1, '1.jpg', '2021-12-21 23:00:25', 'datnt@2nf.com.vn', NULL, '12345678', NULL, NULL, NULL);

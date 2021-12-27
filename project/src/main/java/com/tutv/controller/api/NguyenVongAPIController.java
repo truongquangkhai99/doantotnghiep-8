@@ -37,6 +37,17 @@ public class NguyenVongAPIController {
 		return khoa.toJson();
 	}
 	
+	@RequestMapping(value = "nguyenvong", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String deleteHoSo(@RequestBody NguyenVongDto nguyenVongDto) throws Exception {
+		NguyenVong khoa = nguyenVongService.deleteNguyenVong(nguyenVongDto.getId());
+		if (khoa != null) {
+			return "{\"kq\":\"ok\"}";
+		}
+		else {
+			return "{\"kq\":\"error\"}";
+		}
+	}
+	
 	@RequestMapping(value = "nguyenvongs", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String listNguyenVong() throws Exception {
 		List<NguyenVongResponse> khoa = nguyenVongService.getListNguyenVong();
@@ -66,4 +77,5 @@ public class NguyenVongAPIController {
 			return "{\"kq\":\"error\"}";
 		}
 	}
+	
 }
