@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.tutv.entity.HoSoXetTuyen;
+import com.tutv.response.BTSHoSoXetTuyenResponse;
 import com.tutv.response.HoSoXetTuyenResponse;
 
 /**
@@ -26,7 +27,7 @@ public interface HoSoXetTuyenDAO {
 	HoSoXetTuyen updateHoSo(HoSoXetTuyen hoSoXetTuyen);
 
 
-	List<HoSoXetTuyenResponse> getListHoSo();
+	List<BTSHoSoXetTuyenResponse> getListHoSo();
 	
 	HoSoXetTuyenResponse getHoSo(Integer idTaiKhoan);
 

@@ -73,10 +73,22 @@ public class NguyenVongResponse extends EntityResponse{
 	@Column(name = "diemtb_mon_ba", nullable = false)
 	private Double diemtbMonBa;
 	
+	@Column(name = "diem_xet_tuyen", nullable = true)
+	private Double diemXetTuyen;
+	
 	public NguyenVongResponse() {
 		
 	}
 
+	public Double getDiemXetTuyen() {
+		return diemXetTuyen;
+	}
+
+
+	public void setDiemXetTuyen(Double diemXetTuyen) {
+		this.diemXetTuyen = diemXetTuyen;
+	}
+	
 	public ChilToHopMon getIdNganhObj() {
 		return idNganhObj;
 	}

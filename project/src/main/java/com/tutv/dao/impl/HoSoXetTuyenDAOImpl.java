@@ -5,8 +5,8 @@
  */
 package com.tutv.dao.impl;
 
-
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -21,17 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.HoSoXetTuyenDAO;
 import com.tutv.entity.HoSoXetTuyen;
+import com.tutv.response.BTSHoSoXetTuyenResponse;
+import com.tutv.response.ChilTruongThpt;
 import com.tutv.response.HoSoXetTuyenResponse;
+
 /**
  * HoSoXetTuyenDAO
  */
 @Transactional
-public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
+public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO {
 	/**
 	 * Property sessionFactory
 	 */
 	private SessionFactory sessionFactory;
-	
+
 	/**
 	 * setSessionFactory
 	 * 
@@ -70,7 +73,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 			}
 			return null;
 		}
-		
+
 		return hoSoXetTuyen;
 	}
 
@@ -90,7 +93,7 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 		HoSoXetTuyen hoSoXetTuyen = session.createQuery(query).setMaxResults(1).uniqueResult();
 		return hoSoXetTuyen;
 	}
-	
+
 	@Override
 	public HoSoXetTuyen updateHoSo(HoSoXetTuyen hoSoXetTuyen) {
 		Session session = null;
@@ -122,15 +125,41 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO{
 	 * @return
 	 */
 	@Override
-	public List<HoSoXetTuyenResponse> getListHoSo() {
+	public List<BTSHoSoXetTuyenResponse> getListHoSo() {
+//		 Session session = this.sessionFactory.getCurrentSession();
+//		 CriteriaBuilder builder = session.getCriteriaBuilder();
+//		 CriteriaQuery<BTSHoSoXetTuyenResponse> query =
+//		 builder.createQuery(BTSHoSoXetTuyenResponse.class);
+//		 Root<BTSHoSoXetTuyenResponse> root = query.from(BTSHoSoXetTuyenResponse.class);
+//		 //Predicate p = builder.equal(root.get("id"), id);
+//		 query.select(root);
+//		 List<BTSHoSoXetTuyenResponse> khoalist =
+//		 session.createQuery(query).getResultList();
+//		 return khoalist;
 		Session session = this.sessionFactory.getCurrentSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<HoSoXetTuyenResponse> query = builder.createQuery(HoSoXetTuyenResponse.class);
-		Root<HoSoXetTuyenResponse> root = query.from(HoSoXetTuyenResponse.class);
-		//Predicate p = builder.equal(root.get("id"), id);
-		query.select(root);
-		List<HoSoXetTuyenResponse> khoalist = session.createQuery(query).getResultList();
-		return khoalist;
+		List<BTSHoSoXetTuyenResponse> historys =  new ArrayList<BTSHoSoXetTuyenResponse>();
+		historys = session.createNativeQuery("SELECT `ho_so_xet_tuyen`.*,nguyen_vong.diemtb_mon_mot,nguyen_vong.diemtb_mon_hai,nguyen_vong.diemtb_mon_ba,nguyen_vong.`id_to_hop_mon`,to_hop_mon.`ma_to_hop_mon`,to_hop_mon.`id_nganh`,nganh.`ten_nganh`,nguyen_vong.`diem_xet_tuyen`FROM ho_so_xet_tuyen LEFT JOIN nguyen_vong ON ho_so_xet_tuyen.id = nguyen_vong.`id_ho_so_xet_tuyen` LEFT JOIN to_hop_mon ON to_hop_mon.id = nguyen_vong.`id_to_hop_mon` LEFT JOIN nganh ON nganh.id = to_hop_mon.`id_nganh` ", BTSHoSoXetTuyenResponse.class).getResultList();
+		for (BTSHoSoXetTuyenResponse history : historys) {
+			ChilTruongThpt childrenResponse = session
+			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt10() + "'", ChilTruongThpt.class)
+			    .getSingleResult();
+			history.setIdTruongThpt10Obj(childrenResponse);
+
+			ChilTruongThpt childrenResponse1 = session
+			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt11() + "'", ChilTruongThpt.class)
+			    .getSingleResult();
+			history.setIdTruongThpt11Obj(childrenResponse1);
+
+			ChilTruongThpt childrenResponse2 = session
+			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt12() + "'", ChilTruongThpt.class)
+			    .getSingleResult();
+			history.setIdTruongThpt12Obj(childrenResponse2);
+
+		}
+		return historys;
 	}
 
 	/**

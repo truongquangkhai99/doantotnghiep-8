@@ -23,7 +23,8 @@
 			access="permitAll" />
 			
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/admin/**" access="hasRole('ROLE_QTV')" />
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/bts/**" access="hasRole('ROLE_BTS')" />
 		<!-- <intercept-url pattern="/**" access="isAuthenticated()" /> -->
 
 		<form-login login-page="/login" 

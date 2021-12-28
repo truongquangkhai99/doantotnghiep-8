@@ -18,7 +18,7 @@ public class CommonResponse extends EntityResponse {
 	@Id
 	@Column(name = "id", nullable = false, columnDefinition = "SMALLINT UNSIGNED")
 	private Integer id;
-	
+
 	@Column(name = "ma_to_hop_mon")
 	private String maToHopMon;
 
@@ -27,6 +27,7 @@ public class CommonResponse extends EntityResponse {
 	 */
 	public CommonResponse() {
 	}
+
 	/**
 	 * Constructor
 	 */

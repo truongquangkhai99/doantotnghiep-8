@@ -45,6 +45,8 @@ public class NguyenVongDto extends CommonDto{
 	 */
 	private Double diemtbMonBa;
 	
+	private Double diemXetTuyen;
+	
 	public NguyenVongDto() {
 		
 	}
@@ -95,5 +97,23 @@ public class NguyenVongDto extends CommonDto{
 
 	public void setDiemtbMonBa(Double diemtbMonBa) {
 		this.diemtbMonBa = diemtbMonBa;
+	}
+
+	/**
+	 * getDiemXetTuyen
+	 *
+	 * @return the diemXetTuyen
+	 */
+	public Double getDiemXetTuyen() {
+		return diemXetTuyen;
+	}
+
+	/**
+	 * setDiemXetTuyen
+	 *
+	 * @param diemXetTuyen the diemXetTuyen to set
+	 */
+	public void setDiemXetTuyen(Double diemXetTuyen) {
+		this.diemXetTuyen = diemXetTuyen;
 	}
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tutv.dto.HoSoXetTuyenDto;
 import com.tutv.entity.HoSoXetTuyen;
+import com.tutv.response.BTSHoSoXetTuyenResponse;
 import com.tutv.response.EntityResponse;
 import com.tutv.response.HoSoXetTuyenResponse;
 import com.tutv.service.HoSoXetTuyenService;
@@ -39,7 +40,7 @@ public class HoSoXetTuyenAPIController {
 	
 	@RequestMapping(value = "hosos", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String showHoSos() throws Exception {
-		List<HoSoXetTuyenResponse> hoso = hoSoXetTuyeService.getListHoSo();
+		List<BTSHoSoXetTuyenResponse> hoso = hoSoXetTuyeService.getListHoSo();
 		return EntityResponse.toJson(hoso);
 	}
 	

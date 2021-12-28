@@ -43,7 +43,8 @@
 				<value>com.tutv.response.ChilNganh</value>
 				<value>com.tutv.response.CommonResponse</value>
 				<value>com.tutv.response.ChilToHopMon</value>
-				
+				<value>com.tutv.response.ChilTruongThpt</value>
+				<value>com.tutv.response.BTSHoSoXetTuyenResponse</value>
 				
 
 			</list>

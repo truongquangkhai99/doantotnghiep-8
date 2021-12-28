@@ -5,8 +5,6 @@
  */
 package com.tutv.response;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,19 +17,19 @@ import javax.persistence.Transient;
 
 @Table(name = "ho_so_xet_tuyen")
 @Entity
-public class HoSoXetTuyenResponse extends EntityResponse {
+public class BTSHoSoXetTuyenResponse extends EntityResponse {
 
 	/**
 	 * Property id
 	 */
 	@Id
-	@Column(name = "id", nullable = false, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id")
 	private Integer id;
 
 	/**
 	 * Property idTaiKhoan
 	 */
-	@Column(name = "id_tai_khoan", columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_tai_khoan")
 	private Integer idTaiKhoan;
 
 	/**
@@ -43,7 +41,7 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 	/**
 	 * Property idTruongThpt10
 	 */
-	@Column(name = "id_truong_thpt10", nullable = true, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt10" )
 	private Integer idTruongThpt10;
 
 	/**
@@ -55,7 +53,7 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 	/**
 	 * Property idTruongThpt11
 	 */
-	@Column(name = "id_truong_thpt11", nullable = true, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt11" )
 	private Integer idTruongThpt11;
 
 	/**
@@ -67,7 +65,7 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 	/**
 	 * Property idTruongThpt12
 	 */
-	@Column(name = "id_truong_thpt12", nullable = true, columnDefinition = "INT UNSIGNED")
+	@Column(name = "id_truong_thpt12" )
 	private Integer idTruongThpt12;
 
 	/**
@@ -79,85 +77,97 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 	/**
 	 * Property cccd
 	 */
-	@Column(name = "cccd", nullable = false, length = 60)
+	@Column(name = "cccd")
 	private String cccd;
 
 	/**
 	 * Property hoTen
 	 */
-	@Column(name = "ho_ten", nullable = false, length = 60)
+	@Column(name = "ho_ten")
 	private String hoTen;
 
 	/**
 	 * Property ngay_sinh
 	 */
-	@Column(name = "ngay_sinh", nullable = false)
-	private Date ngaySinh;
+	@Column(name = "ngay_sinh")
+	private String ngaySinh;
 
 	/**
 	 * Property soDienThoai
 	 */
-	@Column(name = "so_dien_thoai", nullable = false, length = 60)
+	@Column(name = "so_dien_thoai")
 	private String soDienThoai;
 
 	/**
 	 * Property diaChi
 	 */
-	@Column(name = "dia_chi", nullable = false, length = 60)
+	@Column(name = "dia_chi")
 	private String diaChi;
 
 	/**
 	 * Property doiTuongUuTien
 	 */
-	@Column(name = "doi_tuong_uu_tien", nullable = false, length = 60)
+	@Column(name = "doi_tuong_uu_tien")
 	private String doiTuongUuTien;
 
 	/**
 	 * Property gioiTinh
 	 */
-	@Column(name = "gioi_tinh", nullable = false, length = 60)
+	@Column(name = "gioi_tinh")
 	private String gioiTinh;
 	/**
 	 * Property soDienThoaiBo
 	 */
-	@Column(name = "so_dien_thoai_bo", nullable = false, length = 60)
+	@Column(name = "so_dien_thoai_bo")
 	private String soDienThoaiBo;
 
 	/**
 	 * Property soDienThoai
 	 */
-	@Column(name = "so_dien_thoai_me", nullable = false, length = 60)
+	@Column(name = "so_dien_thoai_me")
 	private String soDienThoaiMe;
 
 	/**
 	 * Property linkimg1
 	 */
-	@Column(name = "linkimg1", nullable = false, length = 60)
+	@Column(name = "linkimg1")
 	private String linkimg1;
-
-	/**
-	 * Property linkimg2
-	 */
-	@Column(name = "linkimg2", nullable = false, length = 60)
-	private String linkimg2;
-
-	/**
-	 * Property linkimg3
-	 */
-	@Column(name = "linkimg3", nullable = false, length = 60)
-	private String linkimg3;
 
 	/**
 	 * Property doiTuongUuTien
 	 */
-	@Column(name = "khu_vuc_uu_tien", nullable = false, length = 60)
+	@Column(name = "khu_vuc_uu_tien")
 	private String khuVucUuTien;
+	
+	@Column(name = "diemtb_mon_mot")
+	private Double diemtbMonMot;
+	
+	@Column(name = "diemtb_mon_hai")
+	private Double diemtbMonHai;
+	
+	@Column(name = "diemtb_mon_ba")
+	private Double diemtbMonBa;
+	
+	@Column(name = "id_to_hop_mon")
+	private Integer idToHopMon;
+	
+	@Column(name = "ma_to_hop_mon")
+	private String maToHopMon;
+	
+	@Column(name = "id_nganh")
+	private Integer idNganh;
+	
+	@Column(name = "ten_nganh")
+	private String tenNganh;
+	
+	@Column(name = "diem_xet_tuyen")
+	private Double diemXetTuyen;
 
 	/**
 	 * Constructor
 	 */
-	public HoSoXetTuyenResponse() {
-		// TODO Auto-generated constructor stub
+	public BTSHoSoXetTuyenResponse() {
+		
 	}
 
 	public String getKhuVucUuTien() {
@@ -264,11 +274,11 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 		this.hoTen = hoTen;
 	}
 
-	public Date getNgaySinh() {
+	public String getNgaySinh() {
 		return ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
 
@@ -320,20 +330,70 @@ public class HoSoXetTuyenResponse extends EntityResponse {
 		this.linkimg1 = linkimg1;
 	}
 
-	public String getLinkimg2() {
-		return linkimg2;
+	public Double getDiemtbMonMot() {
+		return diemtbMonMot;
 	}
 
-	public void setLinkimg2(String linkimg2) {
-		this.linkimg2 = linkimg2;
+	public void setDiemtbMonMot(Double diemtbMonMot) {
+		this.diemtbMonMot = diemtbMonMot;
 	}
 
-	public String getLinkimg3() {
-		return linkimg3;
+	public Double getDiemtbMonHai() {
+		return diemtbMonHai;
 	}
 
-	public void setLinkimg3(String linkimg3) {
-		this.linkimg3 = linkimg3;
+	public void setDiemtbMonHai(Double diemtbMonHai) {
+		this.diemtbMonHai = diemtbMonHai;
 	}
+
+	public Double getDiemtbMonBa() {
+		return diemtbMonBa;
+	}
+
+	public void setDiemtbMonBa(Double diemtbMonBa) {
+		this.diemtbMonBa = diemtbMonBa;
+	}
+
+	public Integer getIdToHopMon() {
+		return idToHopMon;
+	}
+
+	public void setIdToHopMon(Integer idToHopMon) {
+		this.idToHopMon = idToHopMon;
+	}
+
+	public String getMaToHopMon() {
+		return maToHopMon;
+	}
+
+	public void setMaToHopMon(String maToHopMon) {
+		this.maToHopMon = maToHopMon;
+	}
+
+	public String getTenNganh() {
+		return tenNganh;
+	}
+
+	public void setTenNganh(String tenNganh) {
+		this.tenNganh = tenNganh;
+	}
+
+	public Integer getIdNganh() {
+		return idNganh;
+	}
+
+	public void setIdNganh(Integer idNganh) {
+		this.idNganh = idNganh;
+	}
+
+	public Double getDiemXetTuyen() {
+		return diemXetTuyen;
+	}
+
+	public void setDiemXetTuyen(Double diemXetTuyen) {
+		this.diemXetTuyen = diemXetTuyen;
+	}
+	
+	
 
 }

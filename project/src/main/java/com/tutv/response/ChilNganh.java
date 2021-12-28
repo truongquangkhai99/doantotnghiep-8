@@ -13,20 +13,18 @@ import javax.persistence.Id;
  * ChilNganh
  */
 @Entity
-public class ChilNganh extends EntityResponse{
+public class ChilNganh extends EntityResponse {
 	@Id
 	@Column(name = "id", nullable = false, columnDefinition = "SMALLINT UNSIGNED")
 	private Integer id;
-	
+
 	@Column(name = "ten_khoa")
 	private String tenKhoa;
-	
-	
 
 	public ChilNganh() {
-	
+
 	}
-	
+
 	public ChilNganh(Integer id, String tenKhoa) {
 		this.id = id;
 		this.tenKhoa = tenKhoa;
@@ -47,6 +45,5 @@ public class ChilNganh extends EntityResponse{
 	public void setTenKhoa(String tenKhoa) {
 		this.tenKhoa = tenKhoa;
 	}
-	
-	
+
 }

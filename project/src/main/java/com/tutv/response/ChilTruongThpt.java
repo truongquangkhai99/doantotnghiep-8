@@ -10,24 +10,24 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * ChilNganh
+ * ChilTruongThpt
  */
 @Entity
-public class ChilToHopMon extends EntityResponse {
+public class ChilTruongThpt extends EntityResponse {
 	@Id
 	@Column(name = "id", nullable = false, columnDefinition = "SMALLINT UNSIGNED")
 	private Integer id;
 
-	@Column(name = "ten_nganh")
-	private String tenNganh;
+	@Column(name = "ten_truong")
+	private String tenTruong;
 
-	public ChilToHopMon() {
+	public ChilTruongThpt() {
 
 	}
 
-	public ChilToHopMon(Integer id, String tenNganh) {
+	public ChilTruongThpt(Integer id, String tenTruong) {
 		this.id = id;
-		this.tenNganh = tenNganh;
+		this.tenTruong = tenTruong;
 	}
 
 	public Integer getId() {
@@ -38,12 +38,12 @@ public class ChilToHopMon extends EntityResponse {
 		this.id = id;
 	}
 
-	public String getTenNganh() {
-		return tenNganh;
+	public String getTenTruong() {
+		return tenTruong;
 	}
 
-	public void setTenNganh(String tenNganh) {
-		this.tenNganh = tenNganh;
+	public void setTenTruong(String tenTruong) {
+		this.tenTruong = tenTruong;
 	}
 
 }

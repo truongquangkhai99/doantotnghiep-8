@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Nguyện Vọng</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.1.1/css/buttons.dataTables.min.css"/>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />" />
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
 <link rel="stylesheet" href="<c:url value='/css/style.css' />" />
@@ -25,25 +27,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/khoa">Home</a>
+                <a class="nav-link active" href="/bts/hoso">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/khoa">Quản Lý Khoa</a>
+                <a class="nav-link" href="/bts/hoso">Quản Lý Hồ Sơ</a>
               </li>
               
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/nganh">Quản Lý Ngành</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/tohopmon">Quản Lý Tổ Hợp Môn</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/truongthpt">Quản Lý Trường Thpt</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/taikhoan">Quản Lý Tài Khoản</a>
-              </li>
               <li class="nav-item">
               		<c:if test="${not empty user.username}">
               		 <a class="nav-link" href="/logout">${user.username} (Thoát)</a>
@@ -64,47 +53,19 @@
    <!-- main -->
       <main>
       <div class="p-3 mt-3 text-center">
-        <h3>Quản Lý Tài Khoản</h3>
+        <h3>Quản Lý Hồ Sơ Xét Tuyển</h3>
       </div>
         <form id ="formhoso" class = "border border-primary m-3 p-3">
          <input name = "id" id = "id" type = "hidden"/>
           <div class="row m-3 p-3">
             <div class="col-3">
-              <label>Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <label>Mã Khoa</label>
+              <input type="text" class="form-control" name="maKhoa" placeholder="Mã Khoa">
             </div>
             <div class="col-3">
-              <label>Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name">
-            </div>     
-             <div class="col-3">
-              <label>Password</label>
-              <input type="text" class="form-control" name="password" placeholder="Password">
-            </div>                   
-          </div>
-          <div class="row m-3 p-3">
-            <div class="col-3">
-              <label>Phone</label>
-              <input type="number" class="form-control" name="phone" placeholder="Email">
-            </div>
-            <div class="col-3">
-              <label>Vai Trò</label>
-              <select class="form-control" id="role" name="role">
-                <option></option>
-                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                <option value="ROLE_USER">ROLE_USER</option>
-                <option value="ROLE_BTS">ROLE_BTS</option>
-              </select>
-            </div>
-
-            <div class="col-3">
-              <label>Trạng Thái</label>
-              <select class="form-control" id="enabled" name="enabled">
-                <option></option>
-                <option value="true">Enabled</option>
-                <option value="false">Disable</option>
-              </select>
-            </div>
+              <label>Tên Khoa</label>
+              <input type="text" class="form-control" name="tenKhoa" placeholder="Tên Khoa">
+            </div>            
           </div>
           <div class="row m-3 p-3">
             <div class="col-9">
@@ -120,19 +81,40 @@
         </form>
         <div class = "border border-primary m-3 p-3"> 
         <div class="p-3 mt-3 text-center">
-        <h5>Danh Sách Tài Khoản</h5>
+        <h5>Danh Sách Hồ Sơ Xét Tuyển</h5>
       </div>
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="display nowrap" style="width:100%">
           <thead>
               <tr>
                   <th>Id</th>
-                  <th>Email</th>
-                  <th>Name</th>
-                  <th>Password</th>
-                  <th>Phone</th>
-                  <th>Vai Trò</th>
-                  <th>Trạng Thái</th>
+                  <th>Id Tai Khoan</th>
+                  <th>cccd</th>
+                  <th>Họ Tên</th>
+                  <th>Ngày Sinh</th>
+                  <th>Giới Tính</th>
+                  <th>Số Điện Thoại</th>
+                  <th>Địa Chỉ</th>
+                  <th>Id Trường Thpt 10</th>
+                  <th>Tên Trường Thpt 10</th>
+                  <th>Id Trường Thpt 11</th>
+                  <th>Tên Trường Thpt 11</th>
+                  <th>Id Trường Thpt 12</th>
+                  <th>Tên Trường Thpt 12</th>
+                  <th>Số Điện Thoại Bố</th>
+                  <th>Số Điện Thoại Mẹ</th>
+                  <th>linkimg1</th>
+                  <th>Đối Tượng Ưu Tiên</th>
+                  <th>Khu Vực Ưu Tiên</th>
+                  <th>Id Ngành</th>
+                  <th>Tên Ngành</th>
+                  <th>Id Tổ Hợp Môn</th>
+                  <th>Mã Tổ Hợp Môn</th>
+                  <th>Điểm Môn 1</th>
+                  <th>Điểm Môn 2</th>
+                  <th>Điểm Môn 3</th>
+                  <th>Điểm Xét Tuyển</th>
                   <th></th>
+                  
               </tr>
           </thead>
           
@@ -193,7 +175,14 @@
 <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
 <script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script type='text/javascript' src='<c:url value="/js/taikhoanadmin.js" />'></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
+<%-- <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> --%>
+<script type='text/javascript' src='<c:url value="/js/hosobts.js" />'></script>
 </body>
 </html>
