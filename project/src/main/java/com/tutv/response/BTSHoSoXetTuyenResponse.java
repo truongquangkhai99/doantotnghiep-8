@@ -133,6 +133,20 @@ public class BTSHoSoXetTuyenResponse extends EntityResponse {
 	@Column(name = "linkimg1")
 	private String linkimg1;
 
+	
+	/**
+	 * Property linkimg2
+	 */
+	@Column(name = "linkimg2", nullable = false, length = 60)
+	private String linkimg2;
+
+	/**
+	 * Property linkimg3
+	 */
+	@Column(name = "linkimg3", nullable = false, length = 60)
+	private String linkimg3;
+	
+	
 	/**
 	 * Property doiTuongUuTien
 	 */
@@ -392,6 +406,22 @@ public class BTSHoSoXetTuyenResponse extends EntityResponse {
 
 	public void setDiemXetTuyen(Double diemXetTuyen) {
 		this.diemXetTuyen = diemXetTuyen;
+	}
+
+	public String getLinkimg2() {
+		return linkimg2;
+	}
+
+	public void setLinkimg2(String linkimg2) {
+		this.linkimg2 = linkimg2;
+	}
+
+	public String getLinkimg3() {
+		return linkimg3;
+	}
+
+	public void setLinkimg3(String linkimg3) {
+		this.linkimg3 = linkimg3;
 	}
 	
 	
