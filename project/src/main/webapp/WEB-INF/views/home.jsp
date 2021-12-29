@@ -24,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link active" href="/">Trang Chủ</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Giới Thiệu</a>
@@ -60,7 +60,7 @@
                   <div class="dm">
                     <h5 style="padding: 5px;">Danh Mục Chính</h5>
                     <ul class="menu">
-                      <li><a href="index.php" class="active"><span>Home</span></a></li>
+                      <li><a href="/" class="active"><span>Trang Chủ</span></a></li>
                       <li><a href=""><span>Tuyển sinh</span></a></li>
                       <li><a href=""><span>Tin Tức</span></a></li>
                       <li><a href=""><span>Chương Trình Đào Tạo</span></a></li>

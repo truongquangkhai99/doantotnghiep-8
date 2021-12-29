@@ -32,7 +32,7 @@ public class HoSoXetTuyenAPIController {
 	@Autowired
 	private HoSoXetTuyenService hoSoXetTuyeService;
 	
-	@RequestMapping(value = "hoso", method = RequestMethod.GET)
+	@RequestMapping(value = "hoso", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String showHoSo() throws Exception {
 		HoSoXetTuyenResponse hoso = hoSoXetTuyeService.getHoSo();
 		return hoso.toJson();

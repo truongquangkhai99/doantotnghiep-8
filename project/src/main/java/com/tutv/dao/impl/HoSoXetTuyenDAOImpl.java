@@ -14,9 +14,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tutv.dao.HoSoXetTuyenDAO;
@@ -126,19 +128,48 @@ public class HoSoXetTuyenDAOImpl implements HoSoXetTuyenDAO {
 	 */
 	@Override
 	public List<BTSHoSoXetTuyenResponse> getListHoSo() {
-//		 Session session = this.sessionFactory.getCurrentSession();
-//		 CriteriaBuilder builder = session.getCriteriaBuilder();
-//		 CriteriaQuery<BTSHoSoXetTuyenResponse> query =
-//		 builder.createQuery(BTSHoSoXetTuyenResponse.class);
-//		 Root<BTSHoSoXetTuyenResponse> root = query.from(BTSHoSoXetTuyenResponse.class);
-//		 //Predicate p = builder.equal(root.get("id"), id);
-//		 query.select(root);
-//		 List<BTSHoSoXetTuyenResponse> khoalist =
-//		 session.createQuery(query).getResultList();
-//		 return khoalist;
+		// Session session = this.sessionFactory.getCurrentSession();
+		// CriteriaBuilder builder = session.getCriteriaBuilder();
+		// CriteriaQuery<BTSHoSoXetTuyenResponse> query =
+		// builder.createQuery(BTSHoSoXetTuyenResponse.class);
+		// Root<BTSHoSoXetTuyenResponse> root =
+		// query.from(BTSHoSoXetTuyenResponse.class);
+		// //Predicate p = builder.equal(root.get("id"), id);
+		// query.select(root);
+		// List<BTSHoSoXetTuyenResponse> khoalist =
+		// session.createQuery(query).getResultList();
+		// return khoalist;
+//		Session session = this.sessionFactory.getCurrentSession();
+//		List<BTSHoSoXetTuyenResponse> historys = new ArrayList<BTSHoSoXetTuyenResponse>();
+//		historys = session.createNativeQuery(
+//		    "SELECT `ho_so_xet_tuyen`.*,nguyen_vong.diemtb_mon_mot,nguyen_vong.diemtb_mon_hai,nguyen_vong.diemtb_mon_ba,nguyen_vong.`id_to_hop_mon`,to_hop_mon.`ma_to_hop_mon`,to_hop_mon.`id_nganh`,nganh.`ten_nganh`,nguyen_vong.`diem_xet_tuyen`FROM ho_so_xet_tuyen LEFT JOIN nguyen_vong ON ho_so_xet_tuyen.id = nguyen_vong.`id_ho_so_xet_tuyen` LEFT JOIN to_hop_mon ON to_hop_mon.id = nguyen_vong.`id_to_hop_mon` LEFT JOIN nganh ON nganh.id = to_hop_mon.`id_nganh` ",
+//		    BTSHoSoXetTuyenResponse.class).getResultList();
+//		for (BTSHoSoXetTuyenResponse history : historys) {
+//			ChilTruongThpt childrenResponse = session
+//			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+//			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt10() + "'", ChilTruongThpt.class)
+//			    .getSingleResult();
+//			history.setIdTruongThpt10Obj(childrenResponse);
+//
+//			ChilTruongThpt childrenResponse1 = session
+//			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+//			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt11() + "'", ChilTruongThpt.class)
+//			    .getSingleResult();
+//			history.setIdTruongThpt11Obj(childrenResponse1);
+//
+//			ChilTruongThpt childrenResponse2 = session
+//			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "
+//			        + " WHERE `truong_thpt`.`id` = '" + history.getIdTruongThpt12() + "'", ChilTruongThpt.class)
+//			    .getSingleResult();
+//			history.setIdTruongThpt12Obj(childrenResponse2);
+//
+//		}
+//		return historys;
 		Session session = this.sessionFactory.getCurrentSession();
-		List<BTSHoSoXetTuyenResponse> historys =  new ArrayList<BTSHoSoXetTuyenResponse>();
-		historys = session.createNativeQuery("SELECT `ho_so_xet_tuyen`.*,nguyen_vong.diemtb_mon_mot,nguyen_vong.diemtb_mon_hai,nguyen_vong.diemtb_mon_ba,nguyen_vong.`id_to_hop_mon`,to_hop_mon.`ma_to_hop_mon`,to_hop_mon.`id_nganh`,nganh.`ten_nganh`,nguyen_vong.`diem_xet_tuyen`FROM ho_so_xet_tuyen LEFT JOIN nguyen_vong ON ho_so_xet_tuyen.id = nguyen_vong.`id_ho_so_xet_tuyen` LEFT JOIN to_hop_mon ON to_hop_mon.id = nguyen_vong.`id_to_hop_mon` LEFT JOIN nganh ON nganh.id = to_hop_mon.`id_nganh` ", BTSHoSoXetTuyenResponse.class).getResultList();
+		List<BTSHoSoXetTuyenResponse> historys = new ArrayList<BTSHoSoXetTuyenResponse>();
+		historys = session.createNativeQuery(
+		    "SELECT `ho_so_xet_tuyen`.*,nguyen_vong.diemtb_mon_mot,nguyen_vong.id as id_nguyen_vong ,nguyen_vong.diemtb_mon_hai,nguyen_vong.diemtb_mon_ba,nguyen_vong.`id_to_hop_mon`,to_hop_mon.`ma_to_hop_mon`,to_hop_mon.`id_nganh`,nganh.`ten_nganh`,nguyen_vong.`diem_xet_tuyen`FROM ho_so_xet_tuyen LEFT JOIN nguyen_vong ON ho_so_xet_tuyen.id = nguyen_vong.`id_ho_so_xet_tuyen` LEFT JOIN to_hop_mon ON to_hop_mon.id = nguyen_vong.`id_to_hop_mon` LEFT JOIN nganh ON nganh.id = to_hop_mon.`id_nganh` ",
+		    BTSHoSoXetTuyenResponse.class).getResultList();
 		for (BTSHoSoXetTuyenResponse history : historys) {
 			ChilTruongThpt childrenResponse = session
 			    .createNativeQuery("SELECT `truong_thpt`.`id` ,`truong_thpt`.`ten_truong`   " + "FROM `truong_thpt` "

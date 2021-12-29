@@ -44,7 +44,8 @@ public class HoSoXetTuyenService {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String email = auth.getName();
 		Integer idTaiKhoan = taiKhoanService.getTaiKhoan(email).getId();
-		return hoSoXetTuyenDAO.getHoSo(idTaiKhoan);
+		HoSoXetTuyenResponse hoSoXetTuyenResponse = hoSoXetTuyenDAO.getHoSo(idTaiKhoan);
+		return hoSoXetTuyenResponse;
 	}
 
 	/**

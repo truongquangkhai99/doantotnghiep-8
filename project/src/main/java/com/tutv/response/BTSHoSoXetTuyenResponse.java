@@ -17,14 +17,16 @@ import javax.persistence.Transient;
 
 @Table(name = "ho_so_xet_tuyen")
 @Entity
-public class BTSHoSoXetTuyenResponse extends EntityResponse {
-
-	/**
-	 * Property id
-	 */
+public class BTSHoSoXetTuyenResponse extends EntityResponse{
+	
 	@Id
+	@Column(name = "id_nguyen_vong")
+	private Integer idNguyenVong;
+
 	@Column(name = "id")
 	private Integer id;
+	
+	
 
 	/**
 	 * Property idTaiKhoan
@@ -422,6 +424,14 @@ public class BTSHoSoXetTuyenResponse extends EntityResponse {
 
 	public void setLinkimg3(String linkimg3) {
 		this.linkimg3 = linkimg3;
+	}
+
+	public Integer getIdNguyenVong() {
+		return idNguyenVong;
+	}
+
+	public void setIdNguyenVong(Integer idNguyenVong) {
+		this.idNguyenVong = idNguyenVong;
 	}
 	
 	
