@@ -78,21 +78,24 @@ $(document).ready(function () {
             onkeyup: false,
             onclick: false,
             rules: {
-                tenNganh: {
+                tenTruong: {
                     required: true,
                     maxlength : 60
                 },
-                maNganh: {
+                maTruong: {
                     required: true,
                     maxlength : 60
+                },
+                khuVucUuTien: {
+                    required: true,
                 },
 
             },
             messages: {
-                tenNganh: {
+                tenTruong: {
                     maxlength: "Nhập tối đa 60 ký tự",
                 },
-                maNganh: {
+                maTruong: {
                     maxlength: "Nhập tối đa 60 ký tự",
                 },
             },

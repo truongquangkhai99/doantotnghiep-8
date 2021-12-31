@@ -24,8 +24,6 @@
 		<property name="dataSource" ref="myDataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.tutv.entity.User</value>
-				<value>com.tutv.response.UserResponse</value>
 				<value>com.tutv.entity.TaiKhoan</value>
 				<value>com.tutv.entity.Khoa</value>
 				<value>com.tutv.entity.Nganh</value>

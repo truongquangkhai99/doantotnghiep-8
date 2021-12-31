@@ -67,7 +67,7 @@ public class TruongThptService {
 		truongThpt.setTenTruong(truongThptDto.getTenTruong());
 		truongThpt.setKhuVucUuTien(truongThptDto.getKhuVucUuTien());
 		
-		return truongThptDAO.updateTruongThpt(truongThpt);
+		return truongThptDAO.createTruongThpt(truongThpt);
 	}
 
 	/**

@@ -88,21 +88,17 @@ $(document).ready(function () {
             onkeyup: false,
             onclick: false,
             rules: {
-                tenNganh: {
+                maToHopMon: {
                     required: true,
                     maxlength : 60
                 },
-                maNganh: {
+                idNganh: {
                     required: true,
-                    maxlength : 60
                 },
 
             },
             messages: {
-                tenNganh: {
-                    maxlength: "Nhập tối đa 60 ký tự",
-                },
-                maNganh: {
+                maToHopMon: {
                     maxlength: "Nhập tối đa 60 ký tự",
                 },
             },

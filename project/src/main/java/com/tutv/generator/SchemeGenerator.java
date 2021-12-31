@@ -21,7 +21,6 @@ import com.tutv.entity.NguyenVong;
 import com.tutv.entity.TaiKhoan;
 import com.tutv.entity.ToHopMon;
 import com.tutv.entity.TruongThpt;
-import com.tutv.entity.User;
 
 /**
  * SchemeGenerator
@@ -82,7 +81,6 @@ public class SchemeGenerator {
 		    .build();
 
 		MetadataSources metadatas = new MetadataSources(serviceRegistry);
-		metadatas.addAnnotatedClass(User.class);
 		metadatas.addAnnotatedClass(TaiKhoan.class);
 		metadatas.addAnnotatedClass(Khoa.class);
 		metadatas.addAnnotatedClass(Nganh.class);

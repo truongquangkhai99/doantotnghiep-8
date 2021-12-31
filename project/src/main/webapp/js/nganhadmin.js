@@ -89,6 +89,9 @@ $(document).ready(function () {
             onkeyup: false,
             onclick: false,
             rules: {
+                idKhoa: {
+                    required : true,
+                },
                 tenNganh: {
                     required: true,
                     maxlength : 60

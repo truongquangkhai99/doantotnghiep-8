@@ -45,8 +45,8 @@
 		<beans:property name="defaultTargetUrl"
 			value="/" />
 	</beans:bean>
-	<beans:bean id="myUserDetailsService" class="com.tutv.service.UserDetailsServiceImpl">
-	</beans:bean>
+	<!-- <beans:bean id="myUserDetailsService" class="com.tutv.service.UserDetailsServiceImpl">
+	</beans:bean> -->
 	
 	<authentication-manager alias="authenticationManager">
        <authentication-provider>
