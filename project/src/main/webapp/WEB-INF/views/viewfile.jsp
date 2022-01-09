@@ -84,10 +84,10 @@
               <div class="p-3 m-3 text-center col-12">
                 <h5>File Đính Kèm Của Bạn</h5>
               </div>
-              <div class="p-3 m-3 text-center col-3">
+              <div class="p-3 m-3 text-center col-2">
               </div>
-              <div class="text-center col-6">
-                <img id="my_image" class="p-3 m-3 text-center" style="width:100%;" src="#" />
+              <div class="text-center col-8">
+                <iframe id="my_image" class="p-3 m-3 text-center" style="width:100%;height: 100vh;" src="#" ></iframe>
               </div>
               <div class="p-3 m-3 text-center col-3">
               </div>

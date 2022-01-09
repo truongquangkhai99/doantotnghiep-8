@@ -46,7 +46,8 @@ public class TaiKhoanAPIController {
 			return "{\"kq\":\"tontai\"}";
 		} else {
 			tkService.saveTaiKhoan(taiKhoanDto);
-			String toAddr = "tvtu165@gmail.com";
+			//String toAddr = "tvtu165@gmail.com";
+			String toAddr = taiKhoanDto.getEmail();
 			// email subject
 			String subject = "Xác nhận và kích hoạt tài khoản";
 			// email body

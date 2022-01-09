@@ -43,7 +43,7 @@ public class NguyenVong {
 	 * Property idToHopMon
 	 */
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_to_hop_mon", unique = true, nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TOHOPMON_NGUYENVONG", foreignKeyDefinition = "foreign key (id_to_hop_mon) references to_hop_mon (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
+	@JoinColumn(name = "id_to_hop_mon", nullable = false, foreignKey = @javax.persistence.ForeignKey(name = "FK_TOHOPMON_NGUYENVONG", foreignKeyDefinition = "foreign key (id_to_hop_mon) references to_hop_mon (id) ON DELETE CASCADE ON UPDATE CASCADE"), columnDefinition = "INT UNSIGNED")
 	private ToHopMon idToHopMon;
 	
 	/**

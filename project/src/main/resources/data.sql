@@ -1,5 +1,5 @@
 ALTER TABLE `to_hop_mon` ADD UNIQUE `unique_index`(`id_nganh`, `ma_to_hop_mon`);
-
+ALTER TABLE `nguyen_vong` ADD UNIQUE(`id_ho_so_xet_tuyen`, `id_to_hop_mon`);
 CREATE TRIGGER `update_DiemXetTuyen` BEFORE INSERT ON `nguyen_vong` FOR EACH ROW BEGIN SET new.diem_xet_tuyen = new.diemtb_mon_ba + new.diemtb_mon_hai + new.diemtb_mon_mot; END;
 
 /*Data for the table `khoa` */
