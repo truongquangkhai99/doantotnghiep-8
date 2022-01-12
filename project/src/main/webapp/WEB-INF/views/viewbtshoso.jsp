@@ -67,8 +67,8 @@
 						<table id="example" class="display nowrap" style="width: 100%">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Id Tai Khoan</th>
+									<th>Id Hồ Sơ</th>
+									<!-- <th>Id Tai Khoan</th> -->
 									<th>cccd</th>
 									<th>Họ Tên</th>
 									<th>Ngày Sinh</th>
@@ -83,7 +83,7 @@
 									<th>Tên Trường Thpt 12</th>
 									<th>Số Điện Thoại Bố</th>
 									<th>Số Điện Thoại Mẹ</th>
-									<th>linkimg1</th>
+									<th>Link file</th>
 									<th>Đối Tượng Ưu Tiên</th>
 									<th>Khu Vực Ưu Tiên</th>
 									<th>Id Ngành</th>

@@ -23,9 +23,9 @@ public class LoginController {
      return mav;
   }
 	
-	@RequestMapping(value = "/logina", method = RequestMethod.GET)
+	@RequestMapping(value = "/403", method = RequestMethod.GET)
   public ModelAndView logoutPage() {
-     ModelAndView mav = new ModelAndView("login");
+     ModelAndView mav = new ModelAndView("403");
      return mav;
   }
 	

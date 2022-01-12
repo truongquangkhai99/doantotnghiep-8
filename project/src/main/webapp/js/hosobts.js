@@ -35,7 +35,7 @@ $(document).ready(function () {
         data: dataTable,
         columns: [
           { data: "id" },
-          { data: "idTaiKhoan" },
+//          { data: "idTaiKhoan" },
           { data: "cccd" },
           { data: "hoTen" },
           { data: "ngaySinh" },
@@ -96,7 +96,7 @@ function chartData(table) {
 
   // Count the number of entries for each position
   table
-    .column(20, { search: "applied" })
+    .column(19, { search: "applied" })
     .data()
     .each(function (val) {
       if (counts[val]) {

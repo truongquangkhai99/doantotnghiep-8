@@ -36,7 +36,7 @@
 			authentication-failure-url="/login?error=true"
 			always-use-default-target="true" />
 		<logout logout-url="/logout" logout-success-url="/" />
-
+		<access-denied-handler error-page="/403" />
 		
 		<headers disabled="true" />
 	</http>
