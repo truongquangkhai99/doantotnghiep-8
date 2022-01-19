@@ -3,6 +3,7 @@ function myFunction() {
 }
 function myCancel() {
   $(".form-control").prop("disabled", true);
+  $(".form-control-update").prop("disabled", false);
 }
 //load TruongThpt
 $.ajax({
@@ -47,6 +48,7 @@ $(document).ready(function () {
             new Date(data.ngaySinh + 3600 * 1000 * 24).toJSON().split("T")[0]
           );
           $(".form-control").prop("disabled", true);
+          $(".form-control-update").prop("disabled", false);
         }
       },
     });
@@ -159,6 +161,7 @@ $(document).ready(function () {
               console.log("SUCCESS : ", data.kq);
               if (data.kq == "ok") {
                 alert("Bạn lưu thành công");
+                myCancel();
               } else {
                 alert("Bạn lưu không thành công");
               }
@@ -167,7 +170,7 @@ $(document).ready(function () {
               console.log("ERROR : ", e);
             },
           });
-          myCancel();
+          
         } else {
           $.ajax({
             url: "/hoso",
@@ -179,6 +182,7 @@ $(document).ready(function () {
               console.log("SUCCESS : ", data.kq);
               if (data.kq == "ok") {
                 alert("Bạn cập nhập thành công");
+                myCancel();
               } else {
                 alert("Bạn cập nhập không thành công");
               }
@@ -187,7 +191,7 @@ $(document).ready(function () {
               console.log("ERROR : ", e);
             },
           });
-          myCancel();
+          
         }
         return false;
       },

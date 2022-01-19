@@ -34,12 +34,14 @@ public class FileController {
 	   
 	    String fileName = null;
 	    try {
+	    	
 	      MultipartFile multipartFile = myFile.getMultipartFile();
 	      fileName = multipartFile.getOriginalFilename();
+	      hoSoXetTuyenService.updateFile(fileName);
 	      File file = new File("D:/DoAnTotNghiep/project/src/main/webapp/imghoso", fileName);
 	      multipartFile.transferTo(file);
 	      
-	      hoSoXetTuyenService.updateFile(fileName);
+	      
 	      
 	    } catch (Exception e) {
 	      e.printStackTrace();

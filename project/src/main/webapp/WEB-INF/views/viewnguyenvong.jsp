@@ -95,12 +95,13 @@
               </div>
             </div>
             <div class="row m-3 p-3">
-              <div class="col-9">
-              </div>
-              <div class="col-1">
+              <div class="col-6">
               </div>
               <div class="col-2">
                 <button type="submit" id="btnAddUpdate" class="btn btn-primary form-control">Lưu</button>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-primary form-control" onclick="window.location.reload();">Hủy Bỏ</button>
               </div>
 
             </div>
@@ -121,6 +122,7 @@
                   <th>Điểm trung bình môn thứ 1</th>
                   <th>Điểm trung bình môn thứ 2</th>
                   <th>Điểm trung bình môn thứ 3</th>
+                  <th></th>
                   <th></th>
                 </tr>
               </thead>

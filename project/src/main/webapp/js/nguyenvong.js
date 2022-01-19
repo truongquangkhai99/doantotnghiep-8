@@ -61,6 +61,10 @@ $(document).ready(function () {
                     { "data": "diemtbMonBa" },
                     {
                         "data": null,
+                        "defaultContent": "<strong>Sửa</strong>"
+                    },
+                    {
+                        "data": null,
                         "defaultContent": "<button>Xóa</button>"
                     }
                 ]
