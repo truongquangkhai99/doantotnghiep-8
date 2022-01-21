@@ -59,7 +59,7 @@
                 <form id="formdangky" name="formdangky">
                   <div class="form-group mb-3">
                     <input id="name" type="text" name="name" placeholder="Tên Người Dùng" required
-                      class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                      class="form-control rounded-pill border-0 shadow-sm px-4">
                     <br>
                   </div>
                   <div class="form-group mb-3">
@@ -68,12 +68,12 @@
                   </div>
                   <div class="form-group mb-3">
                     <input id="password" type="password" name="password" placeholder="Mật Khẩu" required
-                      class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                      class="form-control rounded-pill border-0 shadow-sm px-4">
                     <br>
                   </div>
                   <div class="form-group mb-3">
                     <input id="rePassword" type="password" name="rePassword" placeholder="Nhập lại Mật Khẩu"
-                      required class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                      required class="form-control rounded-pill border-0 shadow-sm px-4">
                     <br>
                   </div>
                   <input type="submit" value="Đăng Ký"
@@ -148,6 +148,21 @@
 
 
     $(document).ready(function () {
+    	/* $("#email").change(function(){
+    		 $.ajax({
+    		        type: "GET",
+    		        url: "https://verify.gmass.co/verify?email="+$(this).val()+"&key=52D5D6DD-CD2B-4E5A-A76A-1667AEA3A6FC",
+    		        success: function(data)
+    		        {
+    		        	if(data.Status != "Valid"){
+    		        		alert("Có vẻ email của bạn không hợp lệ. Vui lòng kiểm tra email"); // show response from the php script.
+    		        	}
+    		          
+    		        }
+    		    });
+    	}) */
+    	
+    	
       $("#formdangky").submit(function (e) {
         e.preventDefault();
       }).validate({
@@ -157,7 +172,8 @@
         rules: {
           "email": {
             required: true,
-            maxlength: 255
+            maxlength: 255,
+            checkmail: true
           },
           "password": {
             required: true,
@@ -171,8 +187,9 @@
         },
         messages: {
           "email": {
-            required: "Bắt buộc nhập username",
-            maxlength: "Hãy nhập tối đa 15 ký tự"
+            required: "Bắt buộc nhập Email",
+            maxlength: "Hãy nhập tối đa 15 ký tự",
+            
           },
           "password": {
             required: "Bắt buộc nhập password",
@@ -214,6 +231,27 @@
           return false;
         }
       });
+    	
+      $.validator.addMethod("checkmail", function(value, element){
+    	  //url: "https://verify.gmass.co/verify?email="+value+"&key=52D5D6DD-CD2B-4E5A-A76A-1667AEA3A6FC",
+    	  let kq = true;
+  		$.ajax({
+		        type: "GET",
+		        url: "https://verify.gmass.co/verify?email="+value+"&key=511f82ac-6837-4064-be9a-3c5e4689739b",
+		        async: false,
+		        success: function(data)
+		        {
+		        	if (data.Status != "Valid") {
+		        		kq = false;
+		            } else {
+		            	kq = true;
+		            };
+		        }
+		    });
+  			return kq;
+  
+}, "Có vẻ email của bạn không hợp lệ. Vui lòng kiểm tra email"); 
+    	
     });
   </script>
 

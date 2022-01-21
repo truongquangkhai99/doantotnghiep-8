@@ -6,6 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Hồ Sơ</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
       <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />" />
       <link rel="stylesheet" href="<c:url value='/css/style.css' />" />
     </head>
@@ -110,7 +111,7 @@
             <div class="row m-3 p-3">
               <div class="col-6">
                 <label>Đối Tượng Ưu Tiên</label>
-                <select class="form-control" id="doiTuongUuTien" name="doiTuongUuTien">
+                <select class="form-control input-selectize" id="doiTuongUuTien" name="doiTuongUuTien">
                   <option></option>
                   <option value="00">Không Thuộc</option>
                   <option value="01">01</option>
@@ -225,6 +226,7 @@
       </div>
       </div>
       <script type='text/javascript' src='<c:url value="/js/jquery-3.5.1.js" />'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
       <script type='text/javascript' src='<c:url value="/js/bootstrap.bundle.js" />'></script>
       <script type='text/javascript' src='<c:url value="/js/bootstrap.js" />'></script>
       <script type='text/javascript' src='<c:url value="/js/jquery.validate.js" />'></script>

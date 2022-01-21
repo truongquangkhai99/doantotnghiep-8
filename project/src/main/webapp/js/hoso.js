@@ -1,3 +1,4 @@
+
 function myFunction() {
   $(".form-control").prop("disabled", false);
 }
@@ -15,14 +16,17 @@ $.ajax({
     for (const x in data) {
       $(".TruongThpt").append(new Option(data[x].tenTruong, data[x].id));
     }
-
     // for (const x in data) {
     // 	text += data[x] + ", ";
     // 	$("input[name='']").val("your value");
     //   }
   },
 });
+$('select').on('click', function() {
+	$(this).selectize();
+	});
 $(document).ready(function () {
+	
   function loadData() {
     // Load ho so
     $.ajax({
@@ -36,10 +40,7 @@ $(document).ready(function () {
           for (const [key, value] of Object.entries(data)) {
             try {
               $("input[name='" + key + "']").val(value);
-              $("select[name^=" + key + "] option[value=" + value + "]").attr(
-                "selected",
-                "selected"
-              );
+              $("select[name^=" + key + "] option[value=" + value + "]").attr("selected","selected");
             } catch (error) {
               console.log(error);
             }
